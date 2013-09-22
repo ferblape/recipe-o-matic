@@ -5,13 +5,14 @@ class Ingredient < ActiveRecord::Base
   belongs_to :food
 
   def self.build_from_raw(recipe, str)
-    amount, unit, food_name = TextToIngredientProcessor.process(str, Food)
+    processor = TextToIngredientProcessor.new(str)
+    processor.process!
 
     recipe.ingredients.new do |ingredient|
       ingredient.text   = str
-      ingredient.amount = amount
-      ingredient.unit   = unit
-      ingredient.food   = food
+      ingredient.amount = processor.amount
+      ingredient.unit   = processor.unit
+      ingredient.food   = Food.find_or_create_by(name: processor.food_name)
       ingredient.save!
     end
   end

@@ -1,3 +1,9 @@
+PATH
+  remote: vendor/inflections
+  specs:
+    inflections (4.0.0)
+      activesupport (= 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -60,8 +66,6 @@ GEM
     ffi (1.9.0)
     hike (1.2.3)
     i18n (0.6.5)
-    inflections (0.0.5)
-      activesupport (>= 2.2.1)
     jbuilder (1.5.1)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -163,7 +167,7 @@ DEPENDENCIES
   byebug
   capybara
   database_cleaner
-  inflections
+  inflections!
   jbuilder (~> 1.2)
   jquery-rails
   mocha

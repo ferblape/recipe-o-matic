@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'nokogiri'
-gem 'inflections'
+gem 'inflections', path: 'vendor/inflections'
 gem 'rubypython'
 
 group :development, :test do
