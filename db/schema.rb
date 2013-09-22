@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20130907184047) do
     t.string   "original_url"
     t.text     "text"
     t.integer  "state",        default: 0
+    t.string   "images",                   array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

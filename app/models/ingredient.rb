@@ -4,7 +4,7 @@ class Ingredient < ActiveRecord::Base
   belongs_to :recipe
   belongs_to :food
 
-  def self.build_from_raw(recipe, str)
+  def self.build_from_raw(str, recipe)
     processor = TextToIngredientProcessor.new(str)
     processor.process!
 

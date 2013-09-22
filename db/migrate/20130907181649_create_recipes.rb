@@ -4,6 +4,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :original_url
       t.text :text
       t.integer :state, default: 0
+      t.string :images, array: true
       t.timestamps
     end
 

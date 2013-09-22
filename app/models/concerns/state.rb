@@ -11,4 +11,11 @@ module State
     scope :published, -> { where(state: STATES[:published]) }
   end
 
+  def pending?
+    state == STATES[:pending]
+  end
+
+  def published?
+    state == STATES[:published]
+  end
 end
