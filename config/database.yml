@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: recipe_development
+  pool: 5
+  username: fernando
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: recipe_test
+  pool: 5
+  username: fernando
+  password:
