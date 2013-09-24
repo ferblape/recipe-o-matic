@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20130907184047) do
   add_index "ingredients", ["state"], name: "index_ingredients_on_state", using: :btree
 
   create_table "recipes", force: true do |t|
+    t.string   "name"
     t.string   "original_url"
     t.text     "text"
     t.integer  "state",        default: 0

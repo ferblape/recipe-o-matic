@@ -1,5 +1,6 @@
 recipe = Recipe.new
 recipe.original_url = "http://www.nomas-demama.com/curry-rojo-vegetariano/"
+recipe.name = "Curry Rojo Vegetariano"
 recipe.text = <<-HTML
 1 – Calentamos una olla a fuego medio y rehogamos los ajos y los ajos tiernos picados en un chorro de aceite de girasol. Tras 1 minuto, agregamos la pasta de curry y sofreímos un par de minutos.
 
@@ -26,5 +27,5 @@ recipe.save!
   '— Sal y pimienta',
   '— Aceite de girasol'
 ].each do |ingredient_str|
-  Ingredient.build_from_raw(recipe, ingredient_str)
+  Ingredient.build_from_raw(ingredient_str, recipe)
 end

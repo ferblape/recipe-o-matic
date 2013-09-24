@@ -1,0 +1,14 @@
+es:
+  activerecord:
+    models:
+      recipe: Receta
+      food: Alimento
+      ingredient: Ingrediente
+    attributes:
+      recipe: 
+        name: Nombre
+        text: Texto
+        original_url: URL Original
+        images: Imágenes
+        pending: Pendiente
+        published: Publicado

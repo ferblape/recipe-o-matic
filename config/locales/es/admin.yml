@@ -1,0 +1,9 @@
+es:
+  admin:
+    recipes:
+      form:
+        update: Actualizar
+        pending: Pendiente
+        published: Publicado
+        new: Nueva
+        create: Crear

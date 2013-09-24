@@ -1,6 +1,8 @@
 class Recipe < ActiveRecord::Base
   include State
 
+  validates :name, presence: true
+
   has_many :ingredients
 
   def self.build_from_url(url)

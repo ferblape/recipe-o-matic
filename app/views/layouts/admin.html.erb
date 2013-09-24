@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> we ♥ food</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body>
+  <header>
+    <h1>Recipe-o-matic admin</h1>
+  </header>
+
+  <div class="pure-menu pure-menu-open pure-menu-horizontal">
+    <ul>
+      <li><%= link_to(t('.recipes') + " (#{Recipe.pending.count})", '#') %></li>
+      <li><%= link_to(t('.food'), '#') %></li>
+    </ul>
+  </div>
+
+  <div class="pure-g">
+    <div class="pure-u-1-4 sidebar">
+      <div class="pure-g recipes">
+        <% Recipe.pending.each do |recipe| %>
+          <div class="pure-u-1 recipe">
+            <h5 class="email-name">
+              <%= link_to recipe.name, edit_admin_recipe_path(recipe) %>
+            </h5>
+          </div>
+        <% end %>
+        <div class="pure-u-1 recipe">
+          <h5 class="email-name">
+            <%= link_to t('.new'), new_admin_recipe_path %>
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <%= yield %>
+
+  </div>
+
+  <footer>
+    we ♥ food
+  </footer>
+</body>
+</html>

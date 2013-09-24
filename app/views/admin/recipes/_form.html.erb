@@ -1,0 +1,33 @@
+<%= form_for([:admin, @recipe], html: {class: "pure-form-stacked pure-form"}) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "pure-input-2-3" %>
+
+  <%= f.label :original_url %>
+  <%= f.text_field :original_url, class: "pure-input-2-3" %>
+
+  <%= f.label :text %>
+  <%= f.text_area :text, class: "pure-input-2-3", rows: 18 %>
+
+  <%= f.label :images %>
+  <% if @recipe.images %>
+    <% @recipe.images.each do |image_url| %>
+      <%= f.text_field :images, value: image_url, class: "pure-input-2-3"  %>
+    <% end %>
+  <% else %>
+    <%= text_field_tag "recipe[images][]", nil, class: "pure-input-2-3" %>
+  <% end %>
+  <%= link_to '+', '#' %>
+
+  <div class="pure-g">
+    <% Recipe::STATES.each do |k, v| %>
+      <div class="pure-u-1-4">
+        <%= f.label :state, t(".#{k}"), class: "pure-radio" %>
+        <%= f.radio_button :state, v %>
+      </div>
+    <% end %>
+  </div>
+
+  <br>
+  <%= f.button (@recipe.new_record? ? t('.create') : t('.update')), class: "pure-button pure-button-primary pure-button-xlarge" %>
+<% end %>

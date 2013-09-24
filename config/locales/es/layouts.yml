@@ -1,0 +1,6 @@
+es:
+  layouts:
+    admin:
+      recipes: Recetas
+      food: Alimentos
+      new: Nueva receta

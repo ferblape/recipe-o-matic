@@ -1,0 +1,33 @@
+header, footer {
+  background: black;
+  color: white;
+  padding: 1em;
+}
+
+header {
+  font-size: 120%;
+}
+
+footer {
+  text-align: center;
+  font-size: 80%;
+}
+
+.sidebar .recipes .recipe {
+  background: #333;
+  padding: 9px 20px 9px 49px;
+}
+
+.sidebar .recipes .recipe:hover {
+  background: #555;
+}
+
+.sidebar .recipes .recipe a,
+.sidebar .recipes .recipe a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.recipe-form {
+  padding: 0px 20px 0px 20px;
+}
