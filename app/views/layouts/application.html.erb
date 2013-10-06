@@ -17,8 +17,13 @@
       <div class="sidebar">
         <h3><%= t('.recipes') %></h3>
         <ul>
-          <li><%= link_to_unless_current(t('.last_created'), recipes_path) %></li>
+          <li><%= link_to_unless(action_name == 'index' && params[:q].blank?, t('.last_created'), recipes_path) %></li>
           <li><%= link_to_unless_current(t('.new'), new_recipe_path) %></li>
+          <li>
+            <%= form_tag(recipes_path, method: :get) do %>
+              <%= search_field_tag 'q', params[:q], placeholder: t('.search_help') %>
+            <% end %>
+          </li>
         </ul>
 
         <h4><%= t('.by_ingredient') %></h4>

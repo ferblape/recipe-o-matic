@@ -147,6 +147,8 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     subexec (0.2.3)
+    textacular (3.1.0)
+      activerecord (>= 3.0, < 4.1)
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
       ref
@@ -194,6 +196,7 @@ DEPENDENCIES
   rspec-rails
   rubypython
   sass-rails (~> 4.0.0)
+  textacular (~> 3.0)
   therubyracer
   thin
   turbolinks

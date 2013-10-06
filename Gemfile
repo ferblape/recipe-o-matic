@@ -15,6 +15,7 @@ gem 'jquery-turbolinks'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'textacular', '~> 3.0', require: 'textacular/rails'
 
 group :development, :test do
   gem "quiet_assets"

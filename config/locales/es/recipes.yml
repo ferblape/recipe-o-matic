@@ -1,5 +1,9 @@
 es:
   recipes:
+    index:
+      searching:
+        one: Resultados de la búsqueda <em>'%{q}'</em>. Se ha encontrado <strong>%{count} resultado</strong>.
+        other: Resultados de la búsqueda <em>'%{q}'</em>. Se han encontrado <strong>%{count} resultados</strong>.
     review_recipe:
       review: pendiente de revisión
     new:

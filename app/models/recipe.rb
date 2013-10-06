@@ -1,4 +1,8 @@
+require 'textacular/searchable'
+
 class Recipe < ActiveRecord::Base
+  extend Searchable(:name, :text, :original_url)
+
   include State
   mount_uploader :image, ImageUploader
 

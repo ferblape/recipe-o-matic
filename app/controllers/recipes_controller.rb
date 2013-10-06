@@ -1,6 +1,11 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = Recipe.sorted_by_creation
+    recipes = Recipe
+
+    if searching?
+      recipes = recipes.search(params[:q])
+    end
+    @recipes = recipes.sorted_by_creation
   end
 
   def show

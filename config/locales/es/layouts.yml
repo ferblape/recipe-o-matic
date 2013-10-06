@@ -14,4 +14,6 @@ es:
       last_recipes: Últimas recetas
       new: + Nueva receta
       new_recipe: Nueva receta
+      search: buscar
+      search_help: Buscar una receta
 
