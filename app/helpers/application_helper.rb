@@ -8,4 +8,16 @@ module ApplicationHelper
       end
     end
   end
+
+  def title
+    title = []
+    title << @recipe.name if @recipe
+    if controller_name == 'recipes' 
+      title << t('.last_recipes') if action_name == 'index'
+      title << t('.new_recipe') if action_name == 'new'
+    end
+
+    title << 'mis·recetas'
+    title.compact.join(' — ')
+  end
 end

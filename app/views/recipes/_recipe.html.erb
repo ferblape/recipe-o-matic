@@ -7,6 +7,6 @@
   <p>
   <span class="date"><%= l(recipe.created_at, format: :short) %></span>
   —
-  <%= recipe.ingredients.limit(5).map(&:food).map(&:name).join(', ') %></p>
+  <%= ingredients_summary(recipe) %>
   </p>
 </div>
