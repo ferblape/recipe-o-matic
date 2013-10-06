@@ -12,3 +12,10 @@ es:
         images: Imágenes
         pending: Pendiente
         published: Publicado
+      food:
+        name: Nombre
+      ingredient:
+        amount: Cantidad
+        unit: Unidad
+        food: Alimento
+        text: Texto

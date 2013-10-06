@@ -3,4 +3,7 @@ es:
     admin:
       recipes: Recetas
       food: Alimentos
-      new: Nueva receta
+      new_recipe: Nueva receta
+      new_food: Nuevo alimento
+      pending: pendiente
+      published: publicada

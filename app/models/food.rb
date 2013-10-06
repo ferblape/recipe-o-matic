@@ -1,7 +1,7 @@
 class Food < ActiveRecord::Base
   before_validation :sanitize_name
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   private
 

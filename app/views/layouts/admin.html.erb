@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> we ♥ food</title>
+  <title>Admin ⎯ recipe·o·matic</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "admin", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
 <body>
   <header>
-    <h1>Recipe-o-matic admin</h1>
+    <h1>recipe·o·matic admin</h1>
   </header>
 
   <div class="pure-menu pure-menu-open pure-menu-horizontal">
     <ul>
-      <li><%= link_to(t('.recipes') + " (#{Recipe.pending.count})", '#') %></li>
-      <li><%= link_to(t('.food'), '#') %></li>
+      <li><%= link_to(t('.recipes') + " (#{Recipe.count})", admin_recipes_path) %></li>
+      <li><%= link_to(t('.food'), admin_foods_path) %></li>
     </ul>
   </div>
 
   <div class="pure-g">
+    <% if controller_name == 'recipes' %>
     <div class="pure-u-1-4 sidebar">
       <div class="pure-g recipes">
-        <% Recipe.pending.each do |recipe| %>
-          <div class="pure-u-1 recipe">
+        <% Recipe.sorted_by_creation.each do |recipe| %>
+          <div class="pure-u-1 recipe <%= 'selected' if recipe == @recipe %>">
             <h5 class="email-name">
-              <%= link_to recipe.name, edit_admin_recipe_path(recipe) %>
+              <%= link_to_unless_current "#{recipe.name} #<em>#{state(recipe)}</em>".html_safe, edit_admin_recipe_path(recipe) %>
             </h5>
           </div>
         <% end %>
-        <div class="pure-u-1 recipe">
+        <div class="pure-u-1 recipe new">
           <h5 class="email-name">
-            <%= link_to t('.new'), new_admin_recipe_path %>
+            <%= link_to t('.new_recipe') + ' +', new_admin_recipe_path %>
           </h5>
         </div>
       </div>
     </div>
+    <% end %>
+
+    <% if controller_name == 'foods' %>
+      <div class="pure-u-1-4 sidebar">
+      <div class="pure-g recipes">
+        <div class="pure-u-1 recipe new">
+          <h5 class="email-name">
+            <%= link_to t('.new_food') + ' +', new_admin_food_path %>
+          </h5>
+        </div>
+      </div>
+    </div>
+    <% end %>
 
     <%= yield %>
 

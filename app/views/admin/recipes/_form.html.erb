@@ -11,23 +11,60 @@
 
   <%= f.label :images %>
   <% if @recipe.images %>
-    <% @recipe.images.each do |image_url| %>
-      <%= f.text_field :images, value: image_url, class: "pure-input-2-3"  %>
+    <% @recipe.images.each_with_index do |image_url, i| %>
+      <%= text_field_tag "recipe[images][]", image_url, class: "pure-input-2-3", id: "image_#{i}" %>
     <% end %>
-  <% else %>
-    <%= text_field_tag "recipe[images][]", nil, class: "pure-input-2-3" %>
   <% end %>
-  <%= link_to '+', '#' %>
+  <%= link_to t('.more_images'), 'javascript:void(null)', "data-behaviour" => 'clone-image', "data-target" => 'recipe[images][]' %>
+  <%= link_to t('.delete_image'), 'javascript:void(null)', "data-behaviour" => 'delete-cloned-image', "data-target" => 'recipe[images][]' %>
 
   <div class="pure-g">
     <% Recipe::STATES.each do |k, v| %>
       <div class="pure-u-1-4">
-        <%= f.label :state, t(".#{k}"), class: "pure-radio" %>
-        <%= f.radio_button :state, v %>
+        <%= f.label(:state, class: "pure-radio", value: v) do %>
+          <%= (t(".#{k}") + " " + f.radio_button(:state, v)).html_safe %>
+        <% end %>
       </div>
     <% end %>
   </div>
 
+  <%= t('.ingredients') %>:
+  <table class="ingredients">
+    <thead>
+      <th class="short-col"><%= Ingredient.human_attribute_name(:amount) %></th>
+      <th><%= Ingredient.human_attribute_name(:unit) %></th>
+      <th><%= Ingredient.human_attribute_name(:food) %></th>
+      <th><%= Ingredient.human_attribute_name(:text) %></th>
+      <th><%= t('.delete') %></th>
+    </thead>
+    <tbody>
+      <%= f.fields_for :ingredients do |ingredients_form| %>
+        <tr>
+          <td class="short-col">
+            <%= ingredients_form.text_field :amount %>
+          </td>
+
+          <td>
+            <%= ingredients_form.select :unit, Ingredient::SUPPORTED_UNITS, include_blank: true %>
+          </td>
+
+          <td>
+            <%= ingredients_form.text_field :food_name, value: ingredients_form.object.food.try(:name) %>
+          </td>
+
+          <td>
+            <%= ingredients_form.text_field :text %>
+          </td>
+
+          <td>
+            <%= ingredients_form.check_box :_destroy %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
   <br>
   <%= f.button (@recipe.new_record? ? t('.create') : t('.update')), class: "pure-button pure-button-primary pure-button-xlarge" %>
+  <%= link_to t('.cancel'), admin_recipes_path %>
 <% end %>

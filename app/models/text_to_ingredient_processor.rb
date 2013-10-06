@@ -2,13 +2,17 @@ class TextToIngredientProcessor
   attr_reader :amount, :unit, :food_name
 
   def initialize(str)
-    @str = str
+    @str = str.gsub(/\A([^0-9a-zA-Z]+)/, '')
 
     @amount = nil
     @unit = nil
     @food_name = nil
 
     @current_state = STATES[:root]
+  end
+
+  def text
+    @str
   end
 
   # this method returns an array [amount, unit, food_name],
@@ -39,6 +43,7 @@ class TextToIngredientProcessor
   }
 
   AMOUNTS_REGEXP = /\A(\d+[\.\/\-]?[\d+]?[\s*(\d+[\.\/\-]?[\d+]?)]*)/
+
   NATURAL_AMOUNTS = {
     'uno'    => 1.0,
     'un'     => 1.0,
@@ -46,20 +51,6 @@ class TextToIngredientProcessor
     'tres'   => 3.0,
     'cuatro' => 4.0
   }
-
-  SUPPORTED_UNITS = [
-    'gr', 'g',
-    'kg', 'mg',
-    'ml', 'l',
-    'puñado', 'trozo',
-    'cucharada',
-    'cucharada pequeña',
-    'pequeña',
-    'grande',
-    'taza', 'copa',
-    'grano', 'hoja',
-    'pastilla'
-  ]
 
   def tokenize(str)
     # remove text inside parenthesis
@@ -166,7 +157,7 @@ class TextToIngredientProcessor
     return false if @previous_state != STATES[:amount] &&
                     @previous_state != STATES[:unit]
 
-    SUPPORTED_UNITS.each do |unit|
+    Ingredient::SUPPORTED_UNITS.each do |unit|
       return true if detected?(unit, token)
     end
 
@@ -174,7 +165,7 @@ class TextToIngredientProcessor
   end
 
   def detected?(unit, token)
-    SUPPORTED_UNITS.include?(normalize_unit(token))
+    Ingredient::SUPPORTED_UNITS.include?(normalize_unit(token))
   end
 
   def normalize_unit(token)

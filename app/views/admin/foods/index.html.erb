@@ -1,0 +1,11 @@
+<div class="pure-u-3-4">
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <ul>
+      <% @foods.each do |food| %>
+        <li data-id="<%= food.id %>"><%= link_to(food.name, edit_admin_food_path(food)) %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

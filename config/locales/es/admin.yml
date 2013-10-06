@@ -5,5 +5,15 @@ es:
         update: Actualizar
         pending: Pendiente
         published: Publicado
-        new: Nueva
         create: Crear
+        cancel: Cancelar
+        more_images: '+ añadir'
+        delete_image: '- borrar'
+        clone_ingredient: '+ añadir'
+        delete_ingredient: '- borrar'
+        delete: Eliminar
+    foods:
+      form:
+        update: Actualizar
+        create: Crear
+        cancel: Cancelar

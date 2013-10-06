@@ -3,7 +3,10 @@ class Recipe < ActiveRecord::Base
 
   validates :name, presence: true
 
-  has_many :ingredients
+  has_many :ingredients, -> { order("created_at ASC") }
+  accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
+
+  scope :sorted_by_creation, -> { order("created_at DESC") }
 
   def self.build_from_url(url)
     fetcher = RecipeFetcher::Base.new(url)
