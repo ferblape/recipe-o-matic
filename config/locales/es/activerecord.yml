@@ -9,7 +9,7 @@ es:
         name: Nombre
         text: Texto
         original_url: URL Original
-        images: Imágenes
+        image: Imagen
         pending: Pendiente
         published: Publicado
       food:

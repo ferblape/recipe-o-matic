@@ -10,10 +10,10 @@ class RecipeFetcher::Adapters::NoMasDeMama
       end
   end
 
-  def images
+  def image
     document.search("//div[@id='singlellarg']//img").map do |img|
       img.attributes['src'].value
-    end
+    end.first
   end
 
   def text

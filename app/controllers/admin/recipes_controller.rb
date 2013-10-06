@@ -9,7 +9,6 @@ class Admin::RecipesController < ApplicationController
   end
 
   def new
-    build_image
   end
 
   def create
@@ -39,12 +38,8 @@ class Admin::RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :text, :original_url, {images: []}, :state,
+    params.require(:recipe).permit(:name, :text, :original_url, :image, :state,
                                    ingredients_attributes: [ :amount, :unit, :food_name, :text, :id, :_destroy ])
-  end
-
-  def build_image
-    @recipe.images = ['']
   end
 
   def build_ingredients

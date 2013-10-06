@@ -1,2 +1,18 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="recipe">
+  <h2><%= @recipe.name %></h2>
+  <% if @recipe.original_url.present? %>
+    <p class="url"><%= link_to(@recipe.original_url, @recipe.original_url, target: 'blank') %></p>
+  <% end %>
+
+  <%= image_tag(@recipe.image.thumb.url) %>
+
+  <div class="ingredients">
+    <ul>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li><%= ingredient.text %></li>
+    <% end %>
+    </ul>
+  </div>
+
+  <%= raw @recipe.text %>
+</div>

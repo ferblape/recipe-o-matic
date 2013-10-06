@@ -3,7 +3,7 @@ class RecipeFetcher::Base
 
   attr_accessor :url, :adapter
 
-  delegate :ingredients, :text, :images, :name, to: :adapter
+  delegate :ingredients, :text, :image, :name, to: :adapter
 
   def initialize(url)
     @url = url

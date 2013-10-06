@@ -17,7 +17,7 @@
       <div class="sidebar">
         <h3><%= t('.recipes') %></h3>
         <ul>
-          <li><%= link_to(t('.last_created'), '#') %></li>
+          <li><%= link_to_unless_current(t('.last_created'), recipes_path) %></li>
         </ul>
 
         <h4><%= t('.by_ingredient') %></h4>

@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
   include State
+  mount_uploader :image, ImageUploader
 
   validates :name, presence: true
 
@@ -12,7 +13,7 @@ class Recipe < ActiveRecord::Base
     fetcher = RecipeFetcher::Base.new(url)
 
     recipe = Recipe.create! text: fetcher.text, name: fetcher.name,
-                            images: fetcher.images, original_url: fetcher.url
+                            remote_image_url: fetcher.image, original_url: fetcher.url
 
     fetcher.ingredients.each do |str|
       Ingredient.build_from_raw(str, recipe)

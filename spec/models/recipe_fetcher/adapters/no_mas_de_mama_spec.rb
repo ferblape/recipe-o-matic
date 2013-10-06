@@ -26,11 +26,8 @@ describe RecipeFetcher::Adapters::NoMasDeMama do
 <p>4 – Servimos el <em>curry</em> en cuencos, añadimos un poco más de leche de coco, los brotes de alfalfa y un poco de lima.</p>"
     end
 
-    it 'should be able to extract the images' do
-      subject.images.should == [
-        'http://www.nomas-demama.com/wp-content/uploads/2013/09/IMG_1740_1.jpg',
-        'http://www.nomas-demama.com/wp-content/uploads/2013/09/IMG_1735.jpg'
-      ]
+    it 'should be able to extract a image' do
+      subject.image.should == 'http://www.nomas-demama.com/wp-content/uploads/2013/09/IMG_1740_1.jpg'
     end
   end
 end

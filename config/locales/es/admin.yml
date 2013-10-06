@@ -12,6 +12,8 @@ es:
         clone_ingredient: '+ añadir'
         delete_ingredient: '- borrar'
         delete: Eliminar
+        image_placeholder: 'Pon la URL de una imagen'
+        ingredients: Ingredientes
     foods:
       form:
         update: Actualizar

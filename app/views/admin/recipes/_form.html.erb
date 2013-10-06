@@ -9,14 +9,11 @@
   <%= f.label :text %>
   <%= f.text_area :text, class: "pure-input-2-3", rows: 18 %>
 
-  <%= f.label :images %>
-  <% if @recipe.images %>
-    <% @recipe.images.each_with_index do |image_url, i| %>
-      <%= text_field_tag "recipe[images][]", image_url, class: "pure-input-2-3", id: "image_#{i}" %>
-    <% end %>
+  <%= f.label :image %>
+  <%= f.text_field :remote_image_url, value: nil, class: "pure-input-2-3", placeholder: t('.image_placeholder') %>
+  <% if @recipe.image %>
+    <%= image_tag @recipe.image.thumb.url %>
   <% end %>
-  <%= link_to t('.more_images'), 'javascript:void(null)', "data-behaviour" => 'clone-image', "data-target" => 'recipe[images][]' %>
-  <%= link_to t('.delete_image'), 'javascript:void(null)', "data-behaviour" => 'delete-cloned-image', "data-target" => 'recipe[images][]' %>
 
   <div class="pure-g">
     <% Recipe::STATES.each do |k, v| %>
@@ -28,7 +25,7 @@
     <% end %>
   </div>
 
-  <%= t('.ingredients') %>:
+  <h2><%= t('.ingredients') %>:</h2>
   <table class="ingredients">
     <thead>
       <th class="short-col"><%= Ingredient.human_attribute_name(:amount) %></th>

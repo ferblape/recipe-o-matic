@@ -1,6 +1,7 @@
 .recipe-entry {
-  width: 90%;
+  width: 650px;
   margin-bottom: 50px;
+  border: 1px solid green;
 }
 
 .recipe-entry h2,
@@ -32,4 +33,36 @@
 .recipe-entry .date {
   font-weight: bold;
   color: #333;
+}
+
+.recipe {
+  font: 16px/23px Georgia,Serif;
+  color: #444;
+}
+
+.recipe h2 {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  color: #222;
+}
+
+.recipe #image-slideshow {
+  height: 500px;
+}
+
+.recipe p.url,
+.recipe p.url a,
+.recipe p.url a:visited {
+  font-size: 1em;
+  font-weight: bold;
+  font-family: "Consolas", serif;
+  color: #666;
+  letter-spacing: .05em;
+  text-decoration: none;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.recipe p.url a:hover {
+  text-decoration: underline;
 }

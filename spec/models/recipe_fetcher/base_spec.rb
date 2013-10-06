@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe RecipeFetcher::Base do
   context 'when the url is supported by any adapter' do
-    let(:recipe_url) { 'http://www.nomas-demama.com/curry-rojo-vegetariano/' }
+    let(:recipe_url) { 'http://www.nomasdemama.com/curry-rojo-vegetariano/' }
     let(:subject)    { RecipeFetcher::Base.new(recipe_url) }
 
     it 'calls an adapter for a url' do
