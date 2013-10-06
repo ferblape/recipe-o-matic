@@ -16,4 +16,6 @@ es:
       new_recipe: Nueva receta
       search: buscar
       search_help: Buscar una receta
+      edit: editar receta
+      admin: administrador
 

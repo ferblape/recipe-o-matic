@@ -104,3 +104,19 @@ input.error,
   font-weight: bold;
 }
 
+.tools {
+  background: black;
+  color: #fff;
+  font-size: 0.8em;
+  text-align: right;
+  padding: 3px 20px 5px 10px;
+  margin: 0;
+  font: sans-serif;
+  font-weight: bold;
+}
+
+.tools a,
+.tools a:visited {
+  color: white;
+  text-decoration: none;
+}

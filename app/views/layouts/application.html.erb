@@ -7,6 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="tools">
+    <%= link_to(t('.admin'), admin_recipes_path) %>
+    <% if @recipe %>
+      · <%= link_to(t('.edit'), edit_admin_recipe_path(@recipe)) %>
+    <% end %>
+  </div>
 
   <header>
     <h1><%= link_to('♥ mis·recetas', '/') %></h1>
