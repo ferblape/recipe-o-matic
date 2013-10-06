@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'nokogiri'
 gem 'inflections', path: 'vendor/inflections'
 gem 'rubypython'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem "quiet_assets"

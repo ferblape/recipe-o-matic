@@ -1,7 +1,7 @@
 <%= form_for([:admin, @recipe], html: {class: "pure-form-stacked pure-form"}) do |f| %>
 
   <%= f.label :name %>
-  <%= f.text_field :name, class: "pure-input-2-3" %>
+  <%= f.text_field :name, class: "pure-input-2-3", "data-behaviour" => 'focus' %>
 
   <%= f.label :original_url %>
   <%= f.text_field :original_url, class: "pure-input-2-3" %>
