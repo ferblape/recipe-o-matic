@@ -16,6 +16,8 @@ class RecipeFetcher::Base
   def pick_adapter(url)
     if url =~ /\Ahttp:\/\/www\.nomasdemama\.com/
       RecipeFetcher::Adapters::NoMasDeMama.new(url)
+    elsif url =~ /\Ahttp:\/\/www\.mumumio\.com/
+      RecipeFetcher::Adapters::Mumumio.new(url)
     else
       raise NoAdapter
     end

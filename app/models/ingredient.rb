@@ -23,7 +23,7 @@ class Ingredient < ActiveRecord::Base
     processor.process!
 
     recipe.ingredients.new do |ingredient|
-      ingredient.text   = processor.text
+      ingredient.text   = processor.text.downcase
       ingredient.amount = processor.amount
       ingredient.unit   = processor.unit
       ingredient.food   = Food.find_or_create_by(name: processor.food_name)
