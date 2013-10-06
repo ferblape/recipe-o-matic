@@ -3,7 +3,7 @@ class RecipeFetcher::Base
 
   attr_accessor :url, :adapter
 
-  delegate :ingredients, :text, :images, to: :adapter
+  delegate :ingredients, :text, :images, :name, to: :adapter
 
   def initialize(url)
     @url = url
@@ -14,7 +14,7 @@ class RecipeFetcher::Base
   private
 
   def pick_adapter(url)
-    if url =~ /\Ahttp:\/\/www\.nomas-demama\.com/
+    if url =~ /\Ahttp:\/\/www\.nomasdemama\.com/
       RecipeFetcher::Adapters::NoMasDeMama.new(url)
     else
       raise NoAdapter

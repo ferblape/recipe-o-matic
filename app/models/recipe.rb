@@ -11,9 +11,8 @@ class Recipe < ActiveRecord::Base
   def self.build_from_url(url)
     fetcher = RecipeFetcher::Base.new(url)
 
-    recipe = Recipe.new text: fetcher.text
-    recipe.images = fetcher.images
-    recipe.save!
+    recipe = Recipe.create! text: fetcher.text, name: fetcher.name,
+                            images: fetcher.images, original_url: fetcher.url
 
     fetcher.ingredients.each do |str|
       Ingredient.build_from_raw(str, recipe)

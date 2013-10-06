@@ -33,6 +33,10 @@ class RecipeFetcher::Adapters::NoMasDeMama
     text.join("\n")
   end
 
+  def name
+    document.search('//h1').text
+  end
+
   private
 
   def document
