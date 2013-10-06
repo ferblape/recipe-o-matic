@@ -1,0 +1,12 @@
+<div class="recipe-entry">
+  <%= link_to(image_tag(recipe.image.thumb.url, alt: recipe.name, height: 300, width: 650), recipe_path(recipe), title: recipe.name) %>
+
+  <%= render partial: 'review_recipe', locals: {recipe: recipe} %> 
+
+  <h2><%= link_to(recipe.name, recipe_path(recipe), title: recipe.name) %></h2>
+  <p>
+  <span class="date"><%= l(recipe.created_at, format: :short) %></span>
+  —
+  <%= recipe.ingredients.limit(5).map(&:food).map(&:name).join(', ') %></p>
+  </p>
+</div>
