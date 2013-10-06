@@ -8,7 +8,31 @@
 </head>
 <body>
 
-<%= yield %>
+  <header>
+    <h1><%= link_to('♥ mis·recetas', '/') %></h1>
+  </header>
+
+  <div id="wrapper" class="pure-g">
+    <div class="pure-u-1-4">
+      <div class="sidebar">
+        <h3><%= t('.recipes') %></h3>
+        <ul>
+          <li><%= link_to(t('.last_created'), '#') %></li>
+        </ul>
+
+        <h4><%= t('.by_ingredient') %></h4>
+        <ul>
+        <% Food.find_each do |food| %>
+          <li><%= link_to(food.name, '#') %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pure-u-3-4">
+      <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>

@@ -12,6 +12,7 @@ gem 'nokogiri'
 gem 'inflections', path: 'vendor/inflections'
 gem 'rubypython'
 gem 'jquery-turbolinks'
+gem 'rails-i18n'
 
 group :development, :test do
   gem "quiet_assets"

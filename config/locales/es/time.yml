@@ -1,0 +1,4 @@
+es:
+  time:
+    formats:
+      short: "%d %b %Y"

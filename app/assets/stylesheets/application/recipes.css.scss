@@ -1,0 +1,35 @@
+.recipe-entry {
+  width: 90%;
+  margin-bottom: 50px;
+}
+
+.recipe-entry h2,
+.recipe-entry h2 a,
+.recipe-entry h2 a:visited {
+  font-family: "chaparral-pro-1","chaparral-pro-2", Georgia, Times, "Times New Roman", serif;
+  font-size: 1.2em;
+  letter-spacing: .05em;
+  font-weight: normal;
+  color: #555;
+  padding: 0.1em 0em;
+  margin: 0;
+}
+
+.recipe-entry h2 a:hover {
+  text-decoration: underline;
+}
+
+.recipe-entry p {
+  font-size: 0.7em;
+  color: #444;
+}
+
+.recipe-entry a {
+  text-decoration: none;
+  color: #999;
+}
+
+.recipe-entry .date {
+  font-weight: bold;
+  color: #333;
+}

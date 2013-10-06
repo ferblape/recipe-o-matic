@@ -5,4 +5,8 @@ RecipeOMatic::Application.routes.draw do
     resources :foods, except: [:show]
   end
 
+  root to: 'recipes#index'
+
+  resources :recipes, only: [:show]
+
 end
