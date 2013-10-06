@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  $("[data-behaviour='focus']").focus();
-
   $("[data-behaviour='clone-image']").on({
     click: function(e){
       e.preventDefault(); e.stopPropagation();

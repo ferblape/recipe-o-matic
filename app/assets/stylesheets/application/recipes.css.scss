@@ -1,7 +1,21 @@
+.review {
+  float: right;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: "chaparral-pro-1","chaparral-pro-2", Georgia, Times, "Times New Roman", serif;
+}
+
+.recipe-entry .review a,
+.recipe .review a,
+.recipe .review a:visited,
+.recipe-entry .review a:visited {
+  color: #BD1806;
+  text-decoration: none;
+}
+
 .recipe-entry {
   width: 650px;
-  margin-bottom: 50px;
-  border: 1px solid green;
+  margin-bottom: 70px;
 }
 
 .recipe-entry h2,
@@ -36,6 +50,7 @@
 }
 
 .recipe {
+  width: 650px;
   font: 16px/23px Georgia,Serif;
   color: #444;
 }
@@ -44,10 +59,6 @@
   padding-bottom: 0px;
   margin-bottom: 0px;
   color: #222;
-}
-
-.recipe #image-slideshow {
-  height: 500px;
 }
 
 .recipe p.url,
@@ -65,4 +76,10 @@
 
 .recipe p.url a:hover {
   text-decoration: underline;
+}
+
+.new-recipe {
+  width: 650px;
+  margin-bottom: 70px;
+  font-family: "chaparral-pro-1","chaparral-pro-2", Georgia, Times, "Times New Roman", serif;
 }

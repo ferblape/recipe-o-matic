@@ -6,6 +6,8 @@
 
   <%= image_tag(@recipe.image.thumb.url) %>
 
+  <%= render partial: 'review_recipe', locals: {recipe: @recipe} %> 
+
   <div class="ingredients">
     <ul>
     <% @recipe.ingredients.each do |ingredient| %>

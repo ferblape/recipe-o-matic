@@ -3,6 +3,7 @@ class Recipe < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   validates :name, presence: true
+  validates :original_url, uniqueness: true, allow_blank: true
 
   has_many :ingredients, -> { order("created_at ASC") }
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true

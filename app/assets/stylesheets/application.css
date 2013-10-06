@@ -37,6 +37,7 @@ header h1 a:visited {
 }
 
 .sidebar {
+  margin-top: 16px;
   width: 90%;
   padding: 0px 30px 0px 0px;
   float: left;
@@ -96,3 +97,10 @@ header h1 a:visited {
   line-height: 1.55em;
   color: #666666;
 }
+
+input.error,
+.alert {
+  color: #BD1806;
+  font-weight: bold;
+}
+

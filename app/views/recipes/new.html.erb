@@ -1,0 +1,12 @@
+<div class="new-recipe">
+  <h2><%= t('.new') %></h2>
+
+  <p><%= t('.help') %>:</p>
+
+  <%= form_for @recipe, html: {class: 'pure-form-stacked pure-form'} do |f| %>
+    <%= f.text_field :original_url, class: 'pure-input-2-3', 'data-behaviour' => 'focus' %>
+    <%= flush_the_flash %>
+    <br>
+    <%= f.button t('.save'), class: 'pure-button pure-button-primary pure-button-xlarge', 'data-disable-with' => t('.saving') + '…' %>
+  <% end %>
+</div>

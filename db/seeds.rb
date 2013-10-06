@@ -40,8 +40,3 @@
   Recipe.build_from_url(url)
   puts url
 end
-
-Recipe.all.each do |recipe|
-  recipe.state = Recipe::STATES[:published]
-  recipe.save!
-end

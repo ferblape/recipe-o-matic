@@ -1,0 +1,13 @@
+es:
+  recipes:
+    review_recipe:
+      review: pendiente de revisión
+    new:
+      new: Guarda una nueva receta
+      help: Introduce la URL de la receta y nuestro robot la intentará guardar
+      save: Guardar
+      saving: Guardando
+    create:
+      empty_url: La URL no puede estar vacía
+      no_adapter: No se ha podido procesar la URL<br>%{url}
+

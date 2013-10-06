@@ -7,6 +7,6 @@ RecipeOMatic::Application.routes.draw do
 
   root to: redirect('/recipes')
 
-  resources :recipes, only: [:index, :show]
+  resources :recipes, only: [:new, :create, :index, :show]
 
 end
