@@ -19,7 +19,7 @@
 
 .recipe-entry {
   width: 650px;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
 }
 
 .recipe-entry h2,
@@ -57,6 +57,10 @@
   width: 650px;
   font: 16px/23px Georgia,Serif;
   color: #444;
+}
+
+.recipe .image {
+  text-align: center;
 }
 
 .recipe h2 {

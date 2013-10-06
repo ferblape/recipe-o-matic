@@ -4,7 +4,9 @@
     <p class="url"><%= link_to(@recipe.original_url, @recipe.original_url, target: 'blank') %></p>
   <% end %>
 
-  <%= image_tag(@recipe.image.thumb.url) %>
+  <div class="image">
+    <%= image_tag(@recipe.image.big.url) %>
+  </div>
 
   <%= render partial: 'review_recipe', locals: {recipe: @recipe} %> 
 

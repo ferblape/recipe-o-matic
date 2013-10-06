@@ -18,7 +18,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   process :fix_exif_rotation_and_strip
 
   version :thumb do
-    process resize_to_fill: [650, 300]
+    process resize_to_fill: [650, 260]
+  end
+
+  version :big do
+    process resize_to_limit: [650, nil]
   end
 
 end
