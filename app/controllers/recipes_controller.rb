@@ -2,9 +2,13 @@ class RecipesController < ApplicationController
   def index
     recipes = Recipe
 
-    if searching?
+    if params[:food_id]
+      @food = Food.find(params[:food_id])
+      recipes = @food.recipes
+    elsif searching?
       recipes = recipes.search(params[:q])
     end
+
     @recipes = recipes.sorted_by_creation
   end
 

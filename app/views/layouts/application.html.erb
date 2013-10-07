@@ -34,8 +34,8 @@
 
         <h4><%= t('.by_ingredient') %></h4>
         <ul>
-        <% Food.find_each do |food| %>
-          <li><%= link_to(food.name, '#') %></li>
+        <% Food.popular.each do |food| %>
+          <li><%= link_to("#{food.name} (#{food.count})", food_recipes_path(food), title: t('.recipes_with_food', name: food.name)) %></li>
         <% end %>
         </ul>
       </div>

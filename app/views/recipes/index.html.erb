@@ -1,8 +1,10 @@
 <div class="recipes">
   <% if searching? %>
-    <p class="searching">
-      <%= t('.searching', q: params[:q], count: @recipes.count).html_safe %>
-    </p>
+    <h2><%= t('.searching', q: params[:q], count: @recipes.count).html_safe %></h2>
+  <% end %>
+
+  <% if @food %>
+    <h2><%= t('.food', name: @food.name).html_safe %></h2>
   <% end %>
 
   <%= render partial: 'recipe', collection: @recipes %>

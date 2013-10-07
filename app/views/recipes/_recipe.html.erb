@@ -3,7 +3,7 @@
 
   <%= render partial: 'review_recipe', locals: {recipe: recipe} %> 
 
-  <h2><%= link_to(recipe.name, recipe_path(recipe), title: recipe.name) %></h2>
+  <h3><%= link_to(recipe.name, recipe_path(recipe), title: recipe.name) %></h3>
   <p>
   <span class="date"><%= l(recipe.created_at, format: :short) %></span>
   —

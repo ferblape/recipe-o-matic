@@ -9,11 +9,11 @@
   margin-top: 24px;
 }
 
-.recipes p.searching {
-  font-size: 0.9em;
+.recipes h2 {
+  font-size: 1.4em;
   font-family: "chaparral-pro-1","chaparral-pro-2",Georgia, Times, "Times New Roman", serif;
   color: #333;
-  font-bold: normal;
+  font-weight: nornal;
 }
 
 .recipe-entry .review a,
@@ -29,9 +29,9 @@
   margin-bottom: 40px;
 }
 
-.recipe-entry h2,
-.recipe-entry h2 a,
-.recipe-entry h2 a:visited {
+.recipe-entry h3,
+.recipe-entry h3 a,
+.recipe-entry h3 a:visited {
   font-family: "chaparral-pro-1","chaparral-pro-2", Georgia, Times, "Times New Roman", serif;
   font-size: 1.2em;
   letter-spacing: .05em;
@@ -41,7 +41,7 @@
   margin: 0;
 }
 
-.recipe-entry h2 a:hover {
+.recipe-entry h3 a:hover {
   text-decoration: underline;
 }
 
