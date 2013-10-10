@@ -9,7 +9,7 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true
   validates :original_url, uniqueness: true, allow_blank: true
 
-  has_many :ingredients, -> { order("created_at ASC") }
+  has_many :ingredients
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 
   scope :sorted_by_creation, -> { order("created_at DESC") }

@@ -6,8 +6,8 @@ module RecipesHelper
   def ingredients_summary(recipe)
     max = 5
     ingredients = recipe.ingredients
-    ingredients_count = ingredients.count
-    str = ingredients.limit(max).map(&:food).map(&:name).join(', ')
+    ingredients_count = recipe.ingredients.size
+    str = recipe.ingredients[0..max].map(&:food).map(&:name).join(', ')
 
     ingredients_count > max ? str + '…' : str
   end

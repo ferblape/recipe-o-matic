@@ -4,9 +4,10 @@
   <%= render partial: 'review_recipe', locals: {recipe: recipe} %> 
 
   <h3><%= link_to(recipe.name, recipe_path(recipe), title: recipe.name) %></h3>
+
   <p>
-  <span class="date"><%= l(recipe.created_at, format: :short) %></span>
-  —
-  <%= ingredients_summary(recipe) %>
+    <span class="date"><%= l(recipe.created_at, format: :short) %></span>
+    —
+    <%= ingredients_summary(recipe) %>
   </p>
 </div>

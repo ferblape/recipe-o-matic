@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
       recipes = recipes.search(params[:q])
     end
 
-    @recipes = recipes.sorted_by_creation
+    @recipes = recipes.includes(ingredients: :food).sorted_by_creation
   end
 
   def show
