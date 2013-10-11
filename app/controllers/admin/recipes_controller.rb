@@ -5,7 +5,7 @@ class Admin::RecipesController < ApplicationController
   before_filter :build_ingredients, only: [:new, :edit]
 
   def index
-    redirect_to edit_admin_recipe_path(Recipe.sorted_by_creation.first)
+    @recipes = Recipe.sorted_by_creation
   end
 
   def new

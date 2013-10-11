@@ -8,48 +8,36 @@
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
 <body>
-  <header>
-    <h1>recipe·o·matic admin</h1>
-  </header>
-
-  <div class="pure-menu pure-menu-open pure-menu-horizontal">
-    <ul>
-      <li><%= link_to(t('.recipes') + " (#{Recipe.count})", admin_recipes_path) %></li>
-      <li><%= link_to(t('.food'), admin_foods_path) %></li>
-    </ul>
+  <div class="tools">
+    <%= link_to('⟵ ' + t('.back_to_front'), root_path) %>
+    <% if @recipe %>
+      · <%= link_to(t('.view_recipe'), recipe_path(@recipe)) %>
+    <% end %>
   </div>
 
+  <header>
+    <h1><span>chef</span> <%= link_to('admin', admin_recipes_path) %></h1>
+  </header>
+
   <div class="pure-g">
-    <% if controller_name == 'recipes' %>
     <div class="pure-u-1-4 sidebar">
       <div class="pure-g recipes">
-        <% Recipe.sorted_by_creation.each do |recipe| %>
-          <div class="pure-u-1 recipe <%= 'selected' if recipe == @recipe %>">
-            <h5 class="email-name">
-              <%= link_to_unless_current "#{recipe.name} #<em>#{state(recipe)}</em>".html_safe, edit_admin_recipe_path(recipe) %>
-            </h5>
-          </div>
-        <% end %>
         <div class="pure-u-1 recipe new">
-          <h5 class="email-name">
+          <h5>
+            <%= link_to(t('.recipes') + " (#{Recipe.count})", admin_recipes_path) %>
+          </h5>
+          <h6>
             <%= link_to t('.new_recipe') + ' +', new_admin_recipe_path %>
+          </h6>
+          <h5>
+            <%= link_to(t('.food'), admin_foods_path) %>
           </h5>
-        </div>
-      </div>
-    </div>
-    <% end %>
-
-    <% if controller_name == 'foods' %>
-      <div class="pure-u-1-4 sidebar">
-      <div class="pure-g recipes">
-        <div class="pure-u-1 recipe new">
-          <h5 class="email-name">
+          <h6>
             <%= link_to t('.new_food') + ' +', new_admin_food_path %>
-          </h5>
+          </h6>
         </div>
       </div>
     </div>
-    <% end %>
 
     <%= yield %>
 

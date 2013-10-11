@@ -5,8 +5,8 @@ es:
       food: Alimentos
       new_recipe: Nueva receta
       new_food: Nuevo alimento
-      pending: pendiente
-      published: publicada
+      back_to_front: Volver a la home
+      view_recipe: Ver receta
     application:
       recipes: Recetas
       by_ingredient: Por ingrediente
@@ -16,8 +16,8 @@ es:
       new_recipe: Nueva receta
       search: buscar
       search_help: Buscar una receta
-      edit: editar receta
-      admin: administrador
+      edit: Editar receta
+      admin: Administrador
       recipes_with_food: Recetas con %{name}
       suggestion: Sugerencia
 

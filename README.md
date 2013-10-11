@@ -2,32 +2,8 @@
 
 The best way to save recipes and plan what to cook during the week.
 
-## Save recipes
+## TODO
 
-Recipe:
+### Support these sites:
 
-- original_url
-- plain_text
-
-Food
-
-- name
-- stemmed_name
-
-Ingredient:
-
-- recipe_id
-- amount
-- unit
-- ingredient_id
-
-
-## Python
-
-RubyPython.start
-sys = RubyPython.import("sys")
-sys.path.append("#{Rails.root}/vendor/Python-Inflector/")
-inflector = RubyPython.import('inflector')
-rules = RubyPython.import('rules.spanish')
-i = inflector.Inflector(rules.Spanish)
-RubyPython.stop
+- http://www.disfrutaverdura.com/blog/2013/10/canelones-de-col-y-puerros/

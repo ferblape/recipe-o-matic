@@ -13,6 +13,7 @@ header h1 a,
 header h1 a:visited {
   color: black;
   text-decoration: none;
+  text-align: center;
 }
 
 header h1 span {
@@ -31,6 +32,12 @@ header h1 span {
   -o-font-feature-settings: "liga";
   font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
+}
+
+header h1 span.username {
+  font-family: "proxima-nova-1","proxima-nova-2",Helvetica, Verdana, sans-serif;
+  vertical-align: top;
+  color: #555;
 }
 
 #wrapper {
