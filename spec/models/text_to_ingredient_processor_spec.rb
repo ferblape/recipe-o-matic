@@ -36,7 +36,9 @@ describe TextToIngredientProcessor do
       '2-3 granos de pimienta' =>         [2.0, 'grano', 'pimienta'],
       '15 hojas de albahaca fresca' =>    [15.0, 'hoja', 'albahaca fresca'],
       '200g masa madre de espelta blanca' => [200.0, 'gr', 'masa madre de espelta blanca'],
-      '1 cucharadita de azúcar' =>        [1.0, 'cucharada pequeña', 'azúcar']
+      '1 cda de azúcar' =>                [1.0, 'cucharada', 'azúcar'],
+      '3 cdas de azúcar' =>               [3.0, 'cucharada', 'azúcar'],
+      '3 cucharadas de azúcar' =>         [3.0, 'cucharada', 'azúcar']
     }
   end
 

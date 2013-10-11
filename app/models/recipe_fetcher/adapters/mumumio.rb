@@ -5,7 +5,7 @@ class RecipeFetcher::Adapters::Mumumio
 
   def ingredients
     document.search("//div[contains(@class,'menur_i_s')]//tr").map(&:text).map do |ingredient|
-      ingredient.gsub(/\n/,'').gsub(/\s+/, ' ').strip
+      ingredient.gsub(/\-\n/,'').gsub(/\s+/, ' ').strip.downcase
     end
   end
 
