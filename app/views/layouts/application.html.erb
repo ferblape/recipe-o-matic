@@ -26,6 +26,7 @@
         <ul>
           <li><%= link_to_unless(action_name == 'index' && params[:q].blank?, t('.last_created'), recipes_path) %></li>
           <li><%= link_to_unless_current(t('.new'), new_recipe_path) %></li>
+          <li><%= link_to(t('.suggestion'), suggestion_recipes_path) %></li>
           <li>
             <%= form_tag(recipes_path, method: :get) do %>
               <%= search_field_tag 'q', params[:q], placeholder: t('.search_help') %>

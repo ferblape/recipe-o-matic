@@ -19,4 +19,5 @@ es:
       edit: editar receta
       admin: administrador
       recipes_with_food: Recetas con %{name}
+      suggestion: Sugerencia
 

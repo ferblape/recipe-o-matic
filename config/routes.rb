@@ -11,6 +11,8 @@ RecipeOMatic::Application.routes.draw do
     resources :recipes, only: [:index]
   end
 
-  resources :recipes, only: [:new, :create, :index, :show]
+  resources :recipes, only: [:new, :create, :index, :show] do
+    get :suggestion, on: :collection
+  end
 
 end

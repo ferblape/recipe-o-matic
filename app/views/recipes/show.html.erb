@@ -1,7 +1,7 @@
 <div class="recipe">
   <h2><%= @recipe.name %></h2>
   <% if @recipe.original_url.present? %>
-    <p class="url"><%= link_to(truncate(@recipe.original_url, length: 63) + ' ⟶', @recipe.original_url, target: 'blank') %></p>
+    <p class="url"><%= link_to(truncate(@recipe.original_url, length: 62) + ' ⟶', @recipe.original_url, target: 'blank') %></p>
   <% end %>
 
   <div class="image">

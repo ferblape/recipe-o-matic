@@ -16,6 +16,12 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find params[:id]
   end
 
+  def suggestion
+    id = Recipe.pluck(:id).to_a.shuffle.first
+
+    redirect_to action: :show, id: id
+  end
+
   def new
     @recipe = Recipe.new
   end
