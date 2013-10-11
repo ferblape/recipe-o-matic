@@ -12,7 +12,7 @@ class Recipe < ActiveRecord::Base
   has_many :ingredients
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 
-  scope :sorted_by_creation, -> { order("created_at DESC") }
+  scope :sorted_by_creation, -> { order('created_at DESC') }
 
   def self.build_from_url(url)
     fetcher = RecipeFetcher::Base.new(url)
