@@ -18,13 +18,14 @@ gem 'mini_magick'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 
 group :development, :test do
-  gem "quiet_assets"
-  gem "thin"
-  gem "better_errors"
-  gem "capybara"
-  gem "database_cleaner"
-  gem "mocha", require: false
-  gem "rspec-rails"
-  gem "rspec-instafail"
-  gem "byebug"
+  gem 'capistrano'
+  gem 'quiet_assets'
+  gem 'thin'
+  gem 'better_errors'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'mocha', require: false
+  gem 'rspec-rails'
+  gem 'rspec-instafail'
+  gem 'byebug'
 end
