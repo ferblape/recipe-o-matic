@@ -12,7 +12,7 @@ module RecipeOMatic
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
-    config.assets.precompile += %W{ admin.js admin.css }¬
+    config.assets.precompile += %W{ admin.js admin.css }
   end
 end
 
