@@ -11,6 +11,8 @@ module RecipeOMatic
     config.i18n.default_locale = :es
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+    config.assets.precompile += %W{ admin.js admin.css }¬
   end
 end
 
