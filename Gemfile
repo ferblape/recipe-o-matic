@@ -17,12 +17,11 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
+gem 'rake'
 
 group :development, :test do
-  gem 'capistrano', '~> 3.0.0'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv', require: nil
+  gem 'capistrano', '~> 2.x.x'
+  gem 'capistrano-rbenv'
   gem 'quiet_assets'
   gem 'thin'
   gem 'better_errors'
