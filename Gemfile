@@ -17,7 +17,7 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
-gem 'rake'
+gem "rake", "= 0.9.6"
 
 group :development, :test do
   gem 'capistrano', '~> 2.x.x'
