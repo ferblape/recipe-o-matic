@@ -10,7 +10,7 @@ class Food < ActiveRecord::Base
                          order('count DESC').
                          joins(:recipes, :ingredients).
                          group('foods.id, recipes.id').
-                         limit(20) }
+                         limit(5) }
 
   private
 

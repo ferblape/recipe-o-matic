@@ -6,10 +6,17 @@ class RecipesController < ApplicationController
       @food = Food.find(params[:food_id])
       recipes = @food.recipes
     elsif searching?
-      recipes = recipes.search(params[:q])
+      recipes = recipes.search(params[:term])
     end
 
     @recipes = recipes.includes(ingredients: :food).sorted_by_creation
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: @recipes.to_json
+      end
+    end
   end
 
   def show

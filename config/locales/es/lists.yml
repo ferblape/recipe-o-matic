@@ -1,0 +1,18 @@
+es:
+  lists:
+    new:
+      new: Nueva lista
+      save: Guardar
+      saving: Guardando
+    edit:
+      edit: Editar lista %{name}
+      save: Guardar
+      saving: Guardando
+    show:
+      recipes: Recetas
+      ingredients: Ingredientes
+      no_results: No hay resultados
+      result: resultado
+      results: resultados
+    ingredient_presenter:
+      of: de

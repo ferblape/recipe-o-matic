@@ -29,7 +29,7 @@
           <li><%= link_to(t('.suggestion'), suggestion_recipes_path) %></li>
           <li>
             <%= form_tag(recipes_path, method: :get) do %>
-              <%= search_field_tag 'q', params[:q], placeholder: t('.search_help') %>
+              <%= search_field_tag 'term', params[:term], placeholder: t('.search_help') %>
             <% end %>
           </li>
         </ul>
@@ -39,6 +39,12 @@
         <% Food.popular.each do |food| %>
           <li><%= link_to("#{food.name} (#{food.count})", food_recipes_path(food), title: t('.recipes_with_food', name: food.name)) %></li>
         <% end %>
+        </ul>
+
+        <h3><%= t('.lists') %></h3>
+        <ul>
+          <li><%= link_to_unless_current(t('.last_created'), lists_path) %></li>
+          <li><%= link_to_unless_current(t('.new_list'), new_list_path) %></li>
         </ul>
       </div>
     </div>

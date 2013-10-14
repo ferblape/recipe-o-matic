@@ -1,0 +1,11 @@
+<div class="edit-list">
+  <h2><%= t('.edit', name: @list.name) %></h2>
+
+  <%= form_for @list, html: {class: 'pure-form-stacked pure-form'} do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'pure-input-2-3', 'data-behaviour' => 'focus' %>
+    <%= flush_the_flash %>
+    <br>
+    <%= f.button t('.save'), class: 'pure-button pure-button-primary pure-button-xlarge', 'data-disable-with' => t('.saving') + '…' %>
+  <% end %>
+</div>

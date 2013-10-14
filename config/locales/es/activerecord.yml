@@ -4,6 +4,7 @@ es:
       recipe: Receta
       food: Alimento
       ingredient: Ingrediente
+      list: Lista
     attributes:
       recipe: 
         name: Nombre
@@ -19,3 +20,5 @@ es:
         unit: Unidad
         food: Alimento
         text: Texto
+      list:
+        name: Nombre

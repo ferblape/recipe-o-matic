@@ -14,10 +14,12 @@ es:
       last_recipes: Últimas recetas
       new: + Nueva receta
       new_recipe: Nueva receta
+      new_list: + Nueva lista
       search: buscar
       search_help: Buscar una receta
       edit: Editar receta
       admin: Administrador
       recipes_with_food: Recetas con %{name}
       suggestion: Sugerencia
+      lists: Listas
 

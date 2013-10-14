@@ -4,6 +4,8 @@ class List < ActiveRecord::Base
   has_many :list_entries, -> { order('position ASC') }
   has_many :recipes, through: :list_entries
 
+  scope :sorted_by_creation, -> { order('created_at DESC') }
+
   def ingredients
     ingredients_table = {}
 
@@ -18,7 +20,7 @@ class List < ActiveRecord::Base
 
     ingredients_table.map do |food_name, row|
       row.map do |unit, amount|
-        [food_name, unit, amount]
+        [amount, unit, food_name]
       end.flatten
     end
   end

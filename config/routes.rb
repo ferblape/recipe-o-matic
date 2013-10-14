@@ -15,4 +15,6 @@ RecipeOMatic::Application.routes.draw do
     get :suggestion, on: :collection
   end
 
+  resources :lists
+
 end
