@@ -19,7 +19,10 @@ gem 'mini_magick'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 
 group :development, :test do
-  gem 'capistrano'
+  gem 'capistrano', '~> 3.0.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv', require: nil
   gem 'quiet_assets'
   gem 'thin'
   gem 'better_errors'
