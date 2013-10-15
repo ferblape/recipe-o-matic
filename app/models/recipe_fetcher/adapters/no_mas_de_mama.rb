@@ -4,10 +4,21 @@ class RecipeFetcher::Adapters::NoMasDeMama
   end
 
   def ingredients
-    document.search("//div[@class='meta']/p").map(&:text).
+    # First, most common, search
+    ingredients = document.search("//div[@class='meta']/p").map(&:text).
       select{|n| n =~ /\A\—/ }.map do |n|
         n.gsub(/—/, '').strip
       end
+    if ingredients.empty?
+      candidates = document.search("//div[@class='meta']/p")
+      p = candidates.sort{|p2,p1| p1.to_html.length <=> p2.to_html.length}.first
+
+      ingredients = p.to_html.split(/<br[^>]*>/)[2..-1].map do |n|
+        n.gsub(/—/, '').strip.gsub(/<[^>]+>/,'')
+      end
+    end
+
+    ingredients
   end
 
   def image
