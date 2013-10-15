@@ -38,7 +38,9 @@ describe TextToIngredientProcessor do
       '200g masa madre de espelta blanca' => [200.0, 'gr', 'masa madre de espelta blanca'],
       '1 cda de azúcar' =>                [1.0, 'cucharada', 'azúcar'],
       '3 cdas de azúcar' =>               [3.0, 'cucharada', 'azúcar'],
-      '3 cucharadas de azúcar' =>         [3.0, 'cucharada', 'azúcar']
+      '3 cucharadas de azúcar' =>         [3.0, 'cucharada', 'azúcar'],
+      '1 rama de romero' =>               [1.0, 'rama', 'romero'],
+      '1 vaso de vino' =>                 [1.0, 'vaso', 'vino'],
     }
   end
 
