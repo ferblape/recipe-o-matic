@@ -16,6 +16,7 @@ class Admin::RecipesController < ApplicationController
     if @recipe.save
       redirect_to edit_admin_recipe_path(@recipe), notice: t('.success')
     else
+      flash[:alert] = @recipe.errors.full_messages.to_sentence
       render 'new'
     end
   end
