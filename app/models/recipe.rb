@@ -14,6 +14,8 @@ class Recipe < ActiveRecord::Base
 
   scope :sorted_by_creation, -> { order('created_at DESC') }
 
+  before_save :set_text_html
+
   def self.build_from_url(url)
     fetcher = RecipeFetcher::Base.new(url)
 
@@ -25,5 +27,12 @@ class Recipe < ActiveRecord::Base
     end
 
     recipe
+  end
+
+  private
+
+  def set_text_html
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, space_after_headers: true, underline: true)
+    self.text_html = markdown.render(self.text)
   end
 end

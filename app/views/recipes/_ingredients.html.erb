@@ -1,0 +1,19 @@
+<% if ingredients.size < 7 %>
+<ul>
+  <% ingredients.each do |ingredient| %>
+    <li><%= ingredient.text %></li>
+  <% end %>
+</ul>
+<% else %>
+  <div class="pure-g">
+  <% split_in_two_groups(ingredients).each do |ingredient_group| %>
+    <div class="pure-u-1-2">
+      <ul>
+      <% ingredient_group.each do |ingredient| %>
+        <li><%= ingredient.text %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+<% end %>

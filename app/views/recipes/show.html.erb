@@ -10,13 +10,12 @@
 
   <%= render partial: 'review_recipe', locals: {recipe: @recipe} %> 
 
+  <h3><%= t('.ingredients') %></h3>
+
   <div class="ingredients">
-    <ul>
-    <% @recipe.ingredients.each do |ingredient| %>
-      <li><%= ingredient.text %></li>
-    <% end %>
-    </ul>
+    <%= render partial: 'ingredients', locals: {ingredients: @recipe.ingredients} %>
   </div>
 
-  <%= raw @recipe.text %>
+  <h3><%= t('.preparation') %></h3>
+  <%= raw @recipe.text_html %>
 </div>

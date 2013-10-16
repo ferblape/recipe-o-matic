@@ -7,6 +7,9 @@ es:
         other: "Resultados de la búsqueda <em>'%{q}'</em>. Se han encontrado %{count} resultados:"
     review_recipe:
       review: pendiente de revisión
+    show:
+      preparation: Preparación
+      ingredients: Ingredientes
     new:
       new: Guarda una nueva receta
       help: Introduce la URL de la receta y nuestro robot la intentará guardar
