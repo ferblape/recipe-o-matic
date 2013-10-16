@@ -36,7 +36,7 @@ class Ingredient < ActiveRecord::Base
     if food
       food.name = value
     else
-      build_food name: value
+      self.food = Food.find_or_initialize_by(name: value)
     end
   end
 end
