@@ -4,7 +4,7 @@ class Admin::FoodsController < ApplicationController
   before_filter :load_food, only: [:show, :edit, :update]
 
   def index
-    @foods = Food.order('id DESC')
+    @foods = Food.order('name DESC')
   end
 
   def new
