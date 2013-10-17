@@ -21,7 +21,7 @@ class RecipeFetcher::Adapters::Mumumio
 
       html = node.to_html.strip
       if html.present?
-        text << html
+        text << "- #{clean_str(html)}"
       end
     end
 
@@ -36,5 +36,13 @@ class RecipeFetcher::Adapters::Mumumio
 
   def document
     @document ||= Nokogiri.HTML(open(@url))
+  end
+
+  def clean_str(str)
+    strip_tags(str.gsub(/\d+\s–\s/, ''))
+  end
+
+  def strip_tags(str)
+    str.gsub(/<[^>]+>/,'').strip
   end
 end
