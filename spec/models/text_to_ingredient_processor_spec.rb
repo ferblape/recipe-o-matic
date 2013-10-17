@@ -41,6 +41,7 @@ describe TextToIngredientProcessor do
       '3 cucharadas de azúcar' =>         [3.0, 'cucharada', 'azúcar'],
       '1 rama de romero' =>               [1.0, 'rama', 'romero'],
       '1 vaso de vino' =>                 [1.0, 'vaso', 'vino'],
+      '3 filetes de lomo' =>              [3.0, 'filete', 'lomo'],
     }
   end
 

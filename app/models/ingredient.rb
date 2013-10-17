@@ -16,7 +16,7 @@ class Ingredient < ActiveRecord::Base
     'taza', 'copa',
     'grano', 'hoja',
     'pastilla', 'vaso',
-    'rama'
+    'rama', 'filete'
   ]
 
   def self.build_from_raw(str, recipe)
