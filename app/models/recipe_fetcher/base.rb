@@ -18,6 +18,8 @@ class RecipeFetcher::Base
       RecipeFetcher::Adapters::NoMasDeMama.new(url)
     elsif url =~ /\Ahttp:\/\/www\.mumumio\.com/
       RecipeFetcher::Adapters::Mumumio.new(url)
+    elsif url =~ /\Ahttp:\/\/www\.recetasdemama\.es/
+      RecipeFetcher::Adapters::Recetasdemama.new(url)
     else
       raise NoAdapter
     end
