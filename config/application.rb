@@ -13,6 +13,12 @@ module RecipeOMatic
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
     config.assets.precompile += %W{ admin.js admin.css }
+
+    config.generators do |g|
+      g.orm             :active_record
+      g.template_engine :erb
+      g.test_framework  :rspec, fixture: false
+    end
   end
 end
 
