@@ -5,16 +5,16 @@ RecipeOMatic::Application.routes.draw do
     resources :foods, except: [:show]
   end
 
-  root to: redirect('/recipes')
+  root to: redirect('recipes#index')
 
-  resources :foods do
-    resources :recipes, only: [:index]
+  resources :foods, path: 'alimentos' do
+    resources :recipes, only: [:index], path: 'recetas'
   end
 
-  resources :recipes, only: [:new, :create, :index, :show] do
-    get :suggestion, on: :collection
+  resources :recipes, only: [:new, :create, :index, :show], path: 'recetas' do
+    get :suggestion, on: :collection, path: 'sugerencia'
   end
 
-  resources :lists
+  resources :lists, path: 'listas'
 
 end
