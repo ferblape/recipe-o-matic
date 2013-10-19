@@ -10,8 +10,6 @@ es:
     application:
       recipes: Recetas
       by_ingredient: Por ingrediente
-      last_created: Últimas
-      last_recipes: Últimas recetas
       new: + Nueva receta
       new_recipe: Nueva receta
       new_list: + Nueva lista
