@@ -39,15 +39,13 @@ class Admin::RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :text, :original_url, :image, :state, :remote_image_url,
+    params.require(:recipe).permit(:name, :text, :original_url, :image, :state, :remote_image_url, :ingredients_text,
                                    ingredients_attributes: [ :amount, :unit, :food_name, :text, :id, :_destroy ])
   end
 
   def build_ingredients
     if @recipe.ingredients.any?
       @recipe.ingredients.build
-    else
-      10.times { @recipe.ingredients.build }
     end
   end
 end

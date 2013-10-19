@@ -13,6 +13,7 @@ es:
         image: Imagen
         pending: Pendiente
         published: Publicado
+        ingredients_text: (Pega o escribe la lista de ingredientes)
       food:
         name: Nombre
       ingredient:

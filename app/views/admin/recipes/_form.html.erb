@@ -28,15 +28,21 @@
   </div>
 
   <h2><%= t('.ingredients') %>:</h2>
-  <table class="ingredients">
-    <thead>
-      <th class="short-col"><%= Ingredient.human_attribute_name(:amount) %></th>
-      <th><%= Ingredient.human_attribute_name(:unit) %></th>
-      <th><%= Ingredient.human_attribute_name(:food) %></th>
-      <th><%= Ingredient.human_attribute_name(:text) %></th>
-      <th><%= t('.delete') %></th>
-    </thead>
-    <tbody>
+
+  <% if @recipe.ingredients.empty? %>
+    <%= f.label :ingredients_text %>
+    <%= f.text_area :ingredients_text, cols: 90, rows: 20 %>
+  <% else %>
+
+    <table class="ingredients">
+      <thead>
+        <th class="short-col"><%= Ingredient.human_attribute_name(:amount) %></th>
+        <th><%= Ingredient.human_attribute_name(:unit) %></th>
+        <th><%= Ingredient.human_attribute_name(:food) %></th>
+        <th><%= Ingredient.human_attribute_name(:text) %></th>
+        <th><%= t('.delete') %></th>
+      </thead>
+      <tbody>
       <%= f.fields_for :ingredients do |ingredients_form| %>
         <tr>
           <td class="short-col">
@@ -60,8 +66,9 @@
           </td>
         </tr>
       <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  <% end %>
 
   <br>
   <%= f.button (@recipe.new_record? ? t('.create') : t('.update')), class: "pure-button pure-button-primary pure-button-xlarge" %>

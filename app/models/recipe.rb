@@ -9,6 +9,8 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true
   validates :original_url, uniqueness: true, allow_blank: true
 
+  attr_accessor :ingredients_text
+
   has_many :ingredients
   accepts_nested_attributes_for :ingredients, reject_if: :all_blank, allow_destroy: true
 
@@ -27,6 +29,12 @@ class Recipe < ActiveRecord::Base
     end
 
     recipe
+  end
+
+  def ingredients_text=(value)
+    value.each_line do |ingredient_text|
+      Ingredient.build_from_raw(ingredient_text, self)
+    end
   end
 
   private
