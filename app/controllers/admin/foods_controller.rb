@@ -4,7 +4,12 @@ class Admin::FoodsController < ApplicationController
   before_filter :load_food, only: [:show, :edit, :update]
 
   def index
-    @foods = Food.order('name DESC')
+    foods = Food.order('name ASC')
+    if params[:letter]
+      foods = foods.where("name like ?", params[:letter] + '%')
+    end
+
+    @foods = foods
   end
 
   def new

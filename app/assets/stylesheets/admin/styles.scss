@@ -71,6 +71,24 @@ footer {
   text-decoration: none;
 }
 
+.body {
+  padding-left: 20px;
+}
+
+.body a {
+  color: black;
+}
+
+.body .letters {
+  font-size: 1.5em;
+}
+
+.body ul.food {
+  font-family: "chaparral-pro-1","chaparral-pro-2",Georgia, Times, "Times New Roman", serif;
+  font-size: 16px;
+  color: #505050;
+}
+
 .recipe-form {
   padding: 0px 20px 0px 20px;
 }
