@@ -8,7 +8,7 @@ es:
     attributes:
       recipe: 
         name: Nombre
-        text: Texto
+        text: Preparación
         original_url: URL Original
         image: Imagen
         pending: Pendiente

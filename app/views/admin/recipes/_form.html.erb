@@ -8,15 +8,16 @@
   <%= f.label :original_url %>
   <%= f.text_field :original_url, class: "pure-input-2-3" %>
 
-  <%= f.label :text %>
-  <%= f.text_area :text, class: "pure-input-2-3", rows: 18 %>
-
   <%= f.label :image %>
   <%= f.text_field :remote_image_url, value: nil, class: "pure-input-2-3", placeholder: t('.image_placeholder') %>
   <% if @recipe.image %>
     <%= image_tag @recipe.image.thumb.url %>
   <% end %>
 
+  <%= f.label :text %>
+  <%= f.text_area :text, class: "pure-input-2-3", rows: 15 %>
+
+  <% unless f.object.new_record? %>
   <div class="pure-g">
     <% Recipe::STATES.each do |k, v| %>
       <div class="pure-u-1-4">
@@ -26,12 +27,13 @@
       </div>
     <% end %>
   </div>
+  <% end %>
 
   <h2><%= t('.ingredients') %>:</h2>
 
   <% if @recipe.ingredients.empty? %>
     <%= f.label :ingredients_text %>
-    <%= f.text_area :ingredients_text, cols: 90, rows: 20 %>
+    <%= f.text_area :ingredients_text, cols: 90, rows: 10 %>
   <% else %>
 
     <table class="ingredients">
