@@ -8,6 +8,7 @@ class Recipe < ActiveRecord::Base
 
   validates :name, presence: true
   validates :original_url, uniqueness: true, allow_blank: true
+  validates :slug, uniqueness: true, presence: true
 
   attr_accessor :ingredients_text
 
@@ -16,6 +17,7 @@ class Recipe < ActiveRecord::Base
 
   scope :sorted_by_creation, -> { order('created_at DESC') }
 
+  before_validation :set_slug
   before_save :set_text_html
 
   def self.build_from_url(url)
@@ -37,10 +39,22 @@ class Recipe < ActiveRecord::Base
     end
   end
 
+  def to_param
+    slug
+  end
+
   private
 
   def set_text_html
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, space_after_headers: true, underline: true)
-    self.text_html = markdown.render(self.text)
+    if self.text.present?
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, space_after_headers: true, underline: true)
+      self.text_html = markdown.render(self.text)
+    end
+  end
+
+  def set_slug
+    if name.present?
+      self.slug = self.name.parameterize
+    end
   end
 end

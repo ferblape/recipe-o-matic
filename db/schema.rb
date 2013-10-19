@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131016180031) do
+ActiveRecord::Schema.define(version: 20131019171200) do
 
   create_table "foods", force: true do |t|
     t.string "name"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20131016180031) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "text_html"
+    t.string   "slug"
   end
 
   add_index "recipes", ["state"], name: "index_recipes_on_state", using: :btree

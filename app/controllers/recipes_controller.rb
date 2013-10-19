@@ -20,13 +20,13 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find params[:id]
+    @recipe = Recipe.where(slug: params[:id]).first
   end
 
   def suggestion
-    id = Recipe.pluck(:id).to_a.shuffle.first
+    slug = Recipe.pluck(:slug).to_a.shuffle.first
 
-    redirect_to action: :show, id: id
+    redirect_to action: :show, id: slug
   end
 
   def new

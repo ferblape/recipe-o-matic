@@ -24,7 +24,7 @@ module ApplicationHelper
       title << t('.new_recipe') if action_name == 'new'
     end
 
-    title << 'mis·recetas'
+    title << 'mis recetas'
     title.compact.join(' — ')
   end
 end
