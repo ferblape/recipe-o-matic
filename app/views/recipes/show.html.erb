@@ -1,11 +1,11 @@
-<div class="recipe">
-  <h2><%= @recipe.name %></h2>
+<div class="recipe hrecipe">
+  <h2 class="fn"><%= @recipe.name %></h2>
   <% if @recipe.original_url.present? %>
     <p class="url"><%= link_to(truncate(@recipe.original_url, length: 62) + ' ⟶', @recipe.original_url, target: 'blank') %></p>
   <% end %>
 
   <div class="image">
-    <%= image_tag(@recipe.image.big.url) %>
+    <%= image_tag(@recipe.image.big.url, class: 'photo') %>
   </div>
 
   <%= render partial: 'review_recipe', locals: {recipe: @recipe} %> 
@@ -17,5 +17,7 @@
   </div>
 
   <h3><%= t('.preparation') %></h3>
-  <%= raw @recipe.text_html %>
+  <div class="instructions">
+    <%= raw @recipe.text_html %>
+  </div>
 </div>
