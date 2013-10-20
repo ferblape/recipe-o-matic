@@ -3,8 +3,6 @@ require 'carrierwave/processing/mime_types'
 class ImageUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
-  #include Sprockets::Helpers::RailsHelper
-  #include Sprockets::Helpers::IsolatedHelper
   include CarrierWave::MimeTypes
 
   storage :file
@@ -22,7 +20,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :big do
-    process resize_to_limit: [650, nil]
+    process resize_to_limit: [650, 500]
   end
 
 end
