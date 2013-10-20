@@ -35,7 +35,7 @@ class Admin::RecipesController < ApplicationController
   private
 
   def load_recipe
-    @recipe = params[:id].present? ? Recipe.find(params[:id]) : Recipe.new
+    @recipe = params[:id].present? ? Recipe.where(slug: params[:id]).first : Recipe.new
   end
 
   def recipe_params
