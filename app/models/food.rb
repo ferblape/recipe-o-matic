@@ -21,6 +21,11 @@ class Food < ActiveRecord::Base
     food.destroy
   end
 
+  def self.find_or_initialize_by_name(name)
+    Food.where("name = ? OR plural_name = ?", name, name).first ||
+      Food.new(name: name, plural_name: name)
+  end
+
   private
 
   def sanitize_name

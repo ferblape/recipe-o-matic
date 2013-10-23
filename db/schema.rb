@@ -11,11 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019171200) do
+ActiveRecord::Schema.define(version: 20131023181807) do
 
   create_table "foods", force: true do |t|
     t.string "name"
+    t.string "plural_name"
   end
+
+  add_index "foods", ["name"], name: "index_foods_on_name", using: :btree
+  add_index "foods", ["plural_name"], name: "index_foods_on_plural_name", using: :btree
 
   create_table "ingredients", force: true do |t|
     t.integer  "recipe_id"

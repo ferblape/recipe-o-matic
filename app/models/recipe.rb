@@ -24,18 +24,16 @@ class Recipe < ActiveRecord::Base
     fetcher = RecipeFetcher::Base.new(url)
 
     recipe = Recipe.create! text: fetcher.text, name: fetcher.name,
-                            remote_image_url: fetcher.image, original_url: fetcher.url
-
-    fetcher.ingredients.each do |str|
-      Ingredient.build_from_raw(str, recipe)
-    end
-
+                            remote_image_url: fetcher.image, original_url: fetcher.url,
+                            ingredients_text: fetcher.ingredients
     recipe
   end
 
   def ingredients_text=(value)
-    value.each_line do |ingredient_text|
-      Ingredient.build_from_raw(ingredient_text, self)
+    value = value.split("\n") if value.is_a?(String)
+
+    value.each do |ingredient_line|
+      Ingredient.build_from_raw(ingredient_line, self)
     end
   end
 

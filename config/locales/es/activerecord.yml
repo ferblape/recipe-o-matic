@@ -16,6 +16,7 @@ es:
         ingredients_text: (Pega o escribe la lista de ingredientes)
       food:
         name: Nombre
+        plural_name: Nombre en plural
       ingredient:
         amount: Cantidad
         unit: Unidad

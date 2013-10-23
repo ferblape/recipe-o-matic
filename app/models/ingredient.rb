@@ -24,10 +24,10 @@ class Ingredient < ActiveRecord::Base
     processor.process!
 
     recipe.ingredients.new do |ingredient|
-      ingredient.text   = processor.text.downcase
-      ingredient.amount = processor.amount
-      ingredient.unit   = processor.unit
-      ingredient.food   = Food.find_or_create_by(name: processor.food_name)
+      ingredient.text      = processor.text.downcase
+      ingredient.amount    = processor.amount
+      ingredient.unit      = processor.unit
+      ingredient.food_name = processor.food_name
       ingredient.save!
     end
   end
@@ -36,7 +36,7 @@ class Ingredient < ActiveRecord::Base
     if food
       food.name = value
     else
-      self.food = Food.find_or_initialize_by(name: value)
+      self.food = Food.find_or_initialize_by_name(value)
     end
   end
 end

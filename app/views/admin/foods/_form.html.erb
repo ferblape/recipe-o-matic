@@ -4,6 +4,9 @@
   <%= f.label :name %>
   <%= f.text_field :name, class: "pure-input-2-3" %>
 
+  <%= f.label :plural_name %>
+  <%= f.text_field :plural_name, class: "pure-input-2-3" %>
+
   <br>
   <%= f.button (@food.new_record? ? t('.create') : t('.update')), class: "pure-button pure-button-primary pure-button-xlarge" %>
   <%= link_to t('.cancel'), admin_foods_path %>
