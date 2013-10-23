@@ -1,6 +1,4 @@
 class Ingredient < ActiveRecord::Base
-  include State
-
   belongs_to :recipe
   belongs_to :food, autosave: true
 

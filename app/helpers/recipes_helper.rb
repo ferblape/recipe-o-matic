@@ -1,8 +1,4 @@
 module RecipesHelper
-  def state(recipe)
-    t(".#{Recipe::STATES.invert[recipe.state]}")
-  end
-
   def ingredients_summary(recipe)
     max = 5
     ingredients = recipe.ingredients

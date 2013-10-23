@@ -8,8 +8,6 @@
     <%= image_tag(@recipe.image.big.url, class: 'photo') %>
   </div>
 
-  <%= render partial: 'review_recipe', locals: {recipe: @recipe} %> 
-
   <h3><%= t('.ingredients') %></h3>
 
   <div class="ingredients">

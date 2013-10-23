@@ -17,18 +17,6 @@
   <%= f.label :text %>
   <%= f.text_area :text, class: "pure-input-2-3", rows: 15 %>
 
-  <% unless f.object.new_record? %>
-  <div class="pure-g">
-    <% Recipe::STATES.each do |k, v| %>
-      <div class="pure-u-1-4">
-        <%= f.label(:state, class: "pure-radio", value: v) do %>
-          <%= (t(".#{k}") + " " + f.radio_button(:state, v)).html_safe %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <% end %>
-
   <h2><%= t('.ingredients') %>:</h2>
 
   <% if @recipe.ingredients.empty? %>

@@ -5,8 +5,6 @@ es:
       searching:
         one: "Resultados de la búsqueda <em>'%{q}'</em>. Se ha encontrado %{count} resultado"
         other: "Resultados de la búsqueda <em>'%{q}'</em>. Se han encontrado %{count} resultados"
-    review_recipe:
-      review: pendiente de revisión
     show:
       preparation: Preparación
       ingredients: Ingredientes

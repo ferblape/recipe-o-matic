@@ -39,7 +39,7 @@ class Admin::RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :text, :original_url, :image, :state, :remote_image_url, :ingredients_text,
+    params.require(:recipe).permit(:name, :text, :original_url, :image, :remote_image_url, :ingredients_text,
                                    ingredients_attributes: [ :amount, :unit, :food_name, :text, :id, :_destroy ])
   end
 

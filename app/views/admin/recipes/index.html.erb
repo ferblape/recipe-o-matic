@@ -3,7 +3,7 @@
     <div class="pure-u-1">
       <ul>
       <% @recipes.each do |recipe| %>
-        <li><%= link_to(recipe.name, edit_admin_recipe_path(recipe)) %> - <%= state(recipe) %></li>
+        <li><%= link_to(recipe.name, edit_admin_recipe_path(recipe)) %></li>
       <% end %>
       </ul>
     </div>

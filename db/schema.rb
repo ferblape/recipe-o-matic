@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131023181807) do
+ActiveRecord::Schema.define(version: 20131023184307) do
 
   create_table "foods", force: true do |t|
     t.string "name"
@@ -27,14 +27,12 @@ ActiveRecord::Schema.define(version: 20131023181807) do
     t.string   "text"
     t.float    "amount"
     t.string   "unit"
-    t.integer  "state",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "ingredients", ["food_id"], name: "index_ingredients_on_food_id", using: :btree
   add_index "ingredients", ["recipe_id"], name: "index_ingredients_on_recipe_id", using: :btree
-  add_index "ingredients", ["state"], name: "index_ingredients_on_state", using: :btree
 
   create_table "list_entries", force: true do |t|
     t.integer  "list_id"
@@ -56,14 +54,11 @@ ActiveRecord::Schema.define(version: 20131023181807) do
     t.string   "name"
     t.string   "original_url"
     t.text     "text"
-    t.integer  "state",        default: 0
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "text_html"
     t.string   "slug"
   end
-
-  add_index "recipes", ["state"], name: "index_recipes_on_state", using: :btree
 
 end
