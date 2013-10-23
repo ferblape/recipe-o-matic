@@ -176,7 +176,9 @@ class TextToIngredientProcessor
       'kilogramo' => 'kg',
       'cucharadita' => 'cucharada pequeña',
       'cda' => 'cucharada',
-      'cdas' => 'cucharada'
+      'cdas' => 'cucharada',
+      'litros' => 'l',
+      'litro' => 'l'
     }
 
     token = token.dup.split(' ').map do |t|

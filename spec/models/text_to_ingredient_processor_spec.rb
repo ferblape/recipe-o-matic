@@ -42,6 +42,8 @@ describe TextToIngredientProcessor do
       '1 rama de romero' =>               [1.0, 'rama', 'romero'],
       '1 vaso de vino' =>                 [1.0, 'vaso', 'vino'],
       '3 filetes de lomo' =>              [3.0, 'filete', 'lomo'],
+      '3 litros de leche' =>              [3.0, 'l', 'leche'],
+      '1 litro de leche' =>               [1.0, 'l', 'leche'],
     }
   end
 
