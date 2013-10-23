@@ -1,10 +1,3 @@
-.review {
-  float: right;
-  font-size: 1em;
-  font-weight: bold;
-  font-family: "chaparral-pro-1","chaparral-pro-2", Georgia, Times, "Times New Roman", serif;
-}
-
 .recipes {
   margin-top: 24px;
 }
@@ -110,4 +103,11 @@
 .recipe .ingredients ul {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.recipe .instructions {
+  font-family: "ff-tisa-web-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.45;
 }
