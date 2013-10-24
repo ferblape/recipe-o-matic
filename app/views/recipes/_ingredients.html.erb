@@ -1,7 +1,7 @@
 <% if ingredients.size < 7 %>
 <ul>
   <% ingredients.each do |ingredient| %>
-    <li class="ingredient"><%= ingredient.text %></li>
+    <li class="p-ingredient"><%= ingredient.text %></li>
   <% end %>
 </ul>
 <% else %>
@@ -10,7 +10,7 @@
     <div class="pure-u-1-2">
       <ul>
       <% ingredient_group.each do |ingredient| %>
-        <li class="ingredient"><%= ingredient.text %></li>
+        <li class="p-ingredient"><%= ingredient.text %></li>
       <% end %>
       </ul>
     </div>
