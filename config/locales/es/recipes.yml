@@ -1,5 +1,7 @@
 es:
   recipes:
+    recipe:
+      added: Añadida el
     index:
       food: "Recetas con <em>%{name}</em>:"
       searching:
@@ -8,6 +10,8 @@ es:
     show:
       preparation: Preparación
       ingredients: Ingredientes
+      added: Añadida el
+      edit: Editar
     new:
       new: Guarda una nueva receta
       help: Introduce la URL de la receta y trataremos de traernos la receta
@@ -17,6 +21,10 @@ es:
       manually: guardar la receta a mano
     new_form:
       new: Guarda una nueva receta
+      save: Guardar
+      saving: Guardando
+    edit:
+      edit: Editar receta
       save: Guardar
       saving: Guardando
     form:

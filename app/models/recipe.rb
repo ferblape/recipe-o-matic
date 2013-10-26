@@ -28,12 +28,17 @@ class Recipe < ActiveRecord::Base
     recipe
   end
 
-  def ingredients_text=(value)
-    value = value.split("\n") if value.is_a?(String)
+  def ingredients_text=(ingredients)
+    ingredients = ingredients.split("\n") if ingredients.is_a?(String)
+    self.ingredients.clear if self.ingredients.any?
 
-    value.each do |ingredient_line|
+    ingredients.each do |ingredient_line|
       Ingredient.build_from_raw(ingredient_line, self)
     end
+  end
+
+  def ingredients_text
+    ingredients.map(&:text).join("\n")
   end
 
   def to_param

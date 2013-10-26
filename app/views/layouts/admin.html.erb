@@ -16,19 +16,13 @@
   </div>
 
   <header>
-    <h1><span>chef</span> <%= link_to('admin', admin_recipes_path) %></h1>
+    <h1><span>chef</span> <%= link_to('admin', admin_foods_path) %></h1>
   </header>
 
   <div class="pure-g">
     <div class="pure-u-1-4 sidebar">
       <div class="pure-g recipes">
         <div class="pure-u-1 recipe new">
-          <h5>
-            <%= link_to(t('.recipes') + " (#{Recipe.count})", admin_recipes_path) %>
-          </h5>
-          <h6>
-            <%= link_to t('.new_recipe') + ' +', new_admin_recipe_path %>
-          </h6>
           <h5>
             <%= link_to(t('.food'), admin_foods_path) %>
           </h5>

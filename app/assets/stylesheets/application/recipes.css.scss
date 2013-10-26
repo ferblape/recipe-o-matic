@@ -32,6 +32,8 @@
   color: #555;
   padding: 0.1em 0em;
   margin: 0;
+  overflow: hidden;
+  height: 1%;
 }
 
 .recipe-entry h3 a:hover {
@@ -48,9 +50,8 @@
   color: #999;
 }
 
-.recipe-entry .date {
-  font-weight: bold;
-  color: #333;
+.recipe-entry .meta {
+  float: right;
 }
 
 .recipe {
@@ -68,6 +69,24 @@
   padding-bottom: 0px;
   margin-bottom: 0px;
   color: #222;
+}
+
+.recipe p.meta {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  font-size: 0.8em;
+}
+
+.recipe .meta a,
+.recipe .meta a:visited {
+  color: #666;
+}
+
+.recipe-entry .date,
+.recipe .date {
+  font-weight: bold;
+  color: #333;
 }
 
 .recipe p.url,

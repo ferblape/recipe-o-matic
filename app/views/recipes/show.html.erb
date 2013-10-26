@@ -8,6 +8,12 @@
     <%= image_tag(@recipe.image.big.url, class: 'u-photo') %>
   </div>
 
+  <p class="meta">
+    <%= t('.added') %>
+    <span class="date"><%= l(@recipe.created_at, format: :short) %></span>
+    ⎯ <%= link_to('✎ ' + t('.edit'), edit_recipe_path(@recipe.slug)) %>
+  </p>
+
   <h3><%= t('.ingredients') %></h3>
 
   <div class="ingredients">

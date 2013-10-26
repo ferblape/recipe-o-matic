@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_filter :load_recipe, only: [:new, :edit, :update, :new_form]
+
   def index
     recipes = Recipe
 
@@ -20,7 +22,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.where(slug: params[:id]).first
+    @recipe = Recipe.where(slug: params[:id]).first!
   end
 
   def suggestion
@@ -30,11 +32,9 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
   end
 
   def new_form
-    @recipe = Recipe.new
   end
 
   def create
@@ -59,6 +59,17 @@ class RecipesController < ApplicationController
     redirect_to (@recipe && !@recipe.new_record?) ? recipe_path(@recipe) : new_recipe_path
   end
 
+  def edit
+  end
+
+  def update
+    if @recipe.update_attributes recipe_params
+      redirect_to recipe_path(@recipe) and return
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def recipe_params
@@ -68,5 +79,9 @@ class RecipesController < ApplicationController
 
   def creating_recipe_by_url?
     recipe_params[:original_url].present? && recipe_params[:name].blank?
+  end
+
+  def load_recipe
+    @recipe = params[:id].present? ? Recipe.where(slug: params[:id]).first : Recipe.new
   end
 end

@@ -1,7 +1,7 @@
 require 'acceptance/acceptance_helper'
 
 feature 'Recipes' do
-  scenario 'Create a recipe importing an URL' do
+  scenario 'Create a recipe importing an URL and fixing it' do
     FakeWeb.register_uri(:get, 'http://www.nomasdemama.com/blog/wp-content/uploads/2012/09/240-resultadolowres2.jpg',
                          body: 'xxxxx', content_type: 'image/jpg')
 
@@ -19,6 +19,15 @@ feature 'Recipes' do
     click_button 'Guardar'
 
     expect(page).to have_css 'h2.p-name', text: 'Costillas con longaniza y patatas'
+
+    click_link 'Editar'
+
+    expect(page).to have_content 'Editar receta'
+
+    fill_in 'Nombre', with: 'Costillas con longaniza y patata'
+    click_button 'Actualizar'
+
+    expect(page).to have_css 'h2.p-name', text: 'Costillas con longaniza y patata'
   end
 
   scenario 'Create a recipe manually' do

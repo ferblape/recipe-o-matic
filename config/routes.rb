@@ -1,7 +1,6 @@
 RecipeOMatic::Application.routes.draw do
 
   namespace :admin do
-    resources :recipes
     resources :foods, except: [:show]
   end
 
@@ -11,11 +10,10 @@ RecipeOMatic::Application.routes.draw do
     resources :recipes, only: [:index], path: 'recetas'
   end
 
-  resources :recipes, only: [:new, :create, :index, :show], path: 'recetas' do
+  resources :recipes, except: [:destroy], path: 'recetas' do
     get 'new_form', on: :collection
     get :suggestion, on: :collection, path: 'sugerencia'
   end
 
   resources :lists, path: 'listas'
-
 end
