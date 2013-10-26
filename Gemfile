@@ -32,4 +32,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-instafail'
   gem 'byebug'
+  gem 'capybara-webkit'
+  gem 'steak'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'fakeweb'
 end

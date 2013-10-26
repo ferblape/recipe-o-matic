@@ -21,12 +21,11 @@ class Ingredient < ActiveRecord::Base
     processor = TextToIngredientProcessor.new(str)
     processor.process!
 
-    recipe.ingredients.new do |ingredient|
+    recipe.ingredients.build do |ingredient|
       ingredient.text      = processor.text.downcase
       ingredient.amount    = processor.amount
       ingredient.unit      = processor.unit
       ingredient.food_name = processor.food_name
-      ingredient.save!
     end
   end
 

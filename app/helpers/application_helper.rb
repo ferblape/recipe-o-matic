@@ -21,7 +21,7 @@ module ApplicationHelper
           title << t('.last_recipes')
         end
       end
-      title << t('.new_recipe') if action_name == 'new'
+      title << t('.new_recipe') if action_name == 'new' || action_name == 'new_form'
     end
 
     title << 'mis recetas'

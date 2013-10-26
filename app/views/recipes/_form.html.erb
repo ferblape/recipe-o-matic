@@ -1,0 +1,66 @@
+<%= flush_the_flash %>
+
+<%= form_for(@recipe, html: {class: "pure-form-stacked pure-form"}) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "pure-input-2-3", "data-behaviour" => 'focus' %>
+
+  <%= f.label :original_url %>
+  <%= f.text_field :original_url, class: "pure-input-2-3" %>
+
+  <%= f.label :remote_image_url %>
+  <%= f.text_field :remote_image_url, value: nil, class: "pure-input-2-3", placeholder: t('.image_placeholder') %>
+  <% if @recipe.image %>
+    <%= image_tag @recipe.image.thumb.url %>
+  <% end %>
+
+  <%= f.label :text %>
+  <%= f.text_area :text, class: "pure-input-2-3", rows: 11 %>
+
+  <h3><%= t('.ingredients') %>:</h3>
+
+  <% if @recipe.ingredients.empty? %>
+    <%= f.label :ingredients_text %>
+    <%= f.text_area :ingredients_text, class: "pure-input-2-3", rows: 8 %>
+  <% else %>
+
+    <table class="ingredients">
+      <thead>
+        <th class="short-col"><%= Ingredient.human_attribute_name(:amount) %></th>
+        <th><%= Ingredient.human_attribute_name(:unit) %></th>
+        <th><%= Ingredient.human_attribute_name(:food) %></th>
+        <th><%= Ingredient.human_attribute_name(:text) %></th>
+        <th><%= t('.delete') %></th>
+      </thead>
+      <tbody>
+      <%= f.fields_for :ingredients do |ingredients_form| %>
+        <tr>
+          <td class="short-col">
+            <%= ingredients_form.text_field :amount %>
+          </td>
+
+          <td>
+            <%= ingredients_form.select :unit, Ingredient::SUPPORTED_UNITS, include_blank: true %>
+          </td>
+
+          <td>
+            <%= ingredients_form.text_field :food_name, value: ingredients_form.object.food.try(:name) %>
+          </td>
+
+          <td>
+            <%= ingredients_form.text_field :text %>
+          </td>
+
+          <td>
+            <%= ingredients_form.check_box :_destroy %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <br>
+  <%= f.button (@recipe.new_record? ? t('.create') : t('.update')), class: "pure-button pure-button-primary pure-button-xlarge" %>
+  <%= link_to t('.cancel'), recipes_path %>
+<% end %>

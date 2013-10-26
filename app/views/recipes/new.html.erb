@@ -3,10 +3,11 @@
 
   <p><%= t('.help') %>:</p>
 
-  <%= form_for @recipe, html: {class: 'pure-form-stacked pure-form'} do |f| %>
-    <%= f.text_field :original_url, value: params[:url], class: 'pure-input-2-3', 'data-behaviour' => 'focus' %>
+  <%= form_for @recipe, html: {class: 'pure-form'} do |f| %>
     <%= flush_the_flash %>
-    <br>
-    <%= f.button t('.save'), class: 'pure-button pure-button-primary pure-button-xlarge', 'data-disable-with' => t('.saving') + '…' %>
+    <%= f.text_field :original_url, value: params[:url], class: 'pure-input-2-3', 'data-behaviour' => 'focus' %>
+    <%= f.button t('.save'), class: 'pure-button pure-button-primary pure-button-small', 'data-disable-with' => t('.saving') + '…' %>
   <% end %>
+
+  <p><%= t('.alternative') %> <%= link_to(t('.manually'), new_form_recipes_path) %>.</p>
 </div>

@@ -11,6 +11,7 @@ es:
         text: Preparación
         original_url: URL Original
         image: Imagen
+        remote_image_url: Imagen
         ingredients_text: (Pega o escribe la lista de ingredientes)
       food:
         name: Nombre

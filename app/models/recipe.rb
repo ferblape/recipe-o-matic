@@ -7,7 +7,7 @@ class Recipe < ActiveRecord::Base
 
   validates :name, presence: true
   validates :original_url, uniqueness: true, allow_blank: true
-  validates :slug, uniqueness: true, presence: true
+  validates :slug, uniqueness: true
 
   attr_accessor :ingredients_text
 

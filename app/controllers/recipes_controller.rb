@@ -33,25 +33,40 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
-  def create
-    recipe_params = params.require(:recipe).permit(:original_url)
+  def new_form
+    @recipe = Recipe.new
+  end
 
-    if recipe_params[:original_url].present?
+  def create
+    @recipe = Recipe.new recipe_params
+
+    if creating_recipe_by_url?
       @recipe = Recipe.build_from_url(recipe_params[:original_url])
       redirect_to recipe_path(@recipe) and return
     else
-      flash[:alert] = t('.empty_url')
-      redirect_to new_recipe_path
+      if @recipe.save
+        redirect_to recipe_path(@recipe) and return
+      else
+        flash.now[:alert] = @recipe.errors.full_messages.to_sentence
+        render 'new_form'
+      end
     end
   rescue RecipeFetcher::Base::NoAdapter
     flash[:alert] = t('.no_adapter', url: recipe_params[:original_url]).html_safe
     redirect_to new_recipe_path
   rescue => e
     flash[:alert] = e.message
-    if @recipe && !@recipe.new_record?
-      redirect_to recipe_path(@recipe)
-    else
-      redirect_to new_recipe_path
-    end
+    redirect_to (@recipe && !@recipe.new_record?) ? recipe_path(@recipe) : new_recipe_path
+  end
+
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :text, :original_url, :image, :remote_image_url, :ingredients_text,
+                                   ingredients_attributes: [ :amount, :unit, :food_name, :text, :id, :_destroy ])
+  end
+
+  def creating_recipe_by_url?
+    recipe_params[:original_url].present? && recipe_params[:name].blank?
   end
 end

@@ -12,6 +12,7 @@ RecipeOMatic::Application.routes.draw do
   end
 
   resources :recipes, only: [:new, :create, :index, :show], path: 'recetas' do
+    get 'new_form', on: :collection
     get :suggestion, on: :collection, path: 'sugerencia'
   end
 

@@ -13,6 +13,23 @@ es:
       help: Introduce la URL de la receta y nuestro robot la intentará guardar
       save: Guardar
       saving: Guardando
+      alternative: Tabmién puedes
+      manually: guardar la receta a mano
+    new_form:
+      new: Guarda una nueva receta
+      save: Guardar
+      saving: Guardando
+    form:
+      update: Actualizar
+      create: Guardar
+      cancel: Cancelar
+      more_images: '+ añadir'
+      delete_image: '- borrar'
+      clone_ingredient: '+ añadir'
+      delete_ingredient: '- borrar'
+      delete: Eliminar
+      image_placeholder: 'URL de una imagen'
+      ingredients: Ingredientes
     create:
       empty_url: La URL no puede estar vacía
       no_adapter: No se ha podido procesar la URL<br>%{url}
