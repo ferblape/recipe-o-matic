@@ -27,4 +27,8 @@ module ApplicationHelper
     title << 'mis recetas'
     title.compact.join(' — ')
   end
+
+  def new_recipe_action?
+    controller_name == 'recipes' && %{new new_form}.include?(action_name)
+  end
 end

@@ -22,9 +22,9 @@
   <div id="wrapper" class="pure-g">
     <div class="pure-u-1-4">
       <div class="sidebar">
-        <h3><%= link_to_unless(action_name == 'index' && params[:q].blank?, t('.recipes'), recipes_path) %></h3>
+        <h3><%= link_to_unless(action_name == 'index' && params[:term].blank?, t('.recipes'), recipes_path) %></h3>
         <ul>
-          <li><%= link_to_unless_current(t('.new'), new_recipe_path) %></li>
+          <li><%= link_to_unless(new_recipe_action?, t('.new'), new_recipe_path) %></li>
           <li><%= link_to(t('.suggestion'), suggestion_recipes_path) %></li>
           <li>
             <%= form_tag(recipes_path, method: :get) do %>
