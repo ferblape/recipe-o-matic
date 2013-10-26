@@ -14,7 +14,7 @@ class List < ActiveRecord::Base
       ingredients.each do |ingredient|
         unit = ingredient.unit || ''
         ingredients_table[food.name][unit] ||= 0
-        ingredients_table[food.name][unit] += ingredient.amount
+        ingredients_table[food.name][unit] += ingredient.amount if ingredient.amount
       end
     end
 
