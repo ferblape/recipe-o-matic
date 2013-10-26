@@ -34,7 +34,7 @@ feature 'Recipes' do
     click_link 'guardar la receta a mano'
 
     fill_in 'Nombre', with: 'Cordero de emergencia'
-    fill_in 'URL Original', with: 'http://www.nomasdemama.com/cordero-de-emergencia/'
+    fill_in 'URL de la receta original (si la hubiera)', with: 'http://www.nomasdemama.com/cordero-de-emergencia/'
     fill_in 'Imagen', with: 'http://www.nomasdemama.com/wp-content/uploads/2013/06/IMG_1157_1.jpg'
     fill_in 'Preparación', with: <<-TEXT
 - Calentamos una sartén amplia a fuego medio-fuerte y doramos bien durante 15 minutos el cordero salpimentado junto con las cayenas y los ajos enteros y pelados. Si es necesario, se puede añadir un poco de aceite, pero no hay que abusar. Pasado ese tiempo, retiramos y reservamos.
@@ -60,5 +60,20 @@ TEXT
     click_button 'Guardar'
 
     expect(page).to have_css 'h2.p-name', text: 'Cordero de emergencia'
+  end
+
+  scenario 'Create a recipe using a URL that can´t be parsed' do
+    visit homepage
+
+    click_link '+ Nueva receta'
+
+    page.should have_content('Guarda una nueva receta')
+
+    fill_in 'recipe_original_url', with: 'http://www.lasrecetasdemanoli.com/wadus'
+    click_button 'Guardar'
+
+    expect(page).to have_content "No se ha podido procesar la URL http://www.lasrecetasdemanoli.com/wadus. Crea la receta a mano."
+
+    find_field('URL de la receta original (si la hubiera)').value.should == 'http://www.lasrecetasdemanoli.com/wadus'
   end
 end

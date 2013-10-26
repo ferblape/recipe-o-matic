@@ -98,6 +98,11 @@
   color: #555;
 }
 
+.new-recipe .info {
+  font-size: 0.9em;
+  font-style: italic;
+}
+
 .recipe h3 {
   padding-top: 13px;
   padding-bottom: 3px;
@@ -115,4 +120,8 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.45;
+}
+
+.new-recipe form label {
+  margin-top: 12px;
 }

@@ -1,27 +1,21 @@
 <%= flush_the_flash %>
 
 <%= form_for(@recipe, html: {class: "pure-form-stacked pure-form"}) do |f| %>
-
   <%= f.label :name %>
   <%= f.text_field :name, class: "pure-input-2-3", "data-behaviour" => 'focus' %>
 
   <%= f.label :original_url %>
-  <%= f.text_field :original_url, class: "pure-input-2-3" %>
+  <%= f.text_field :original_url, value: (f.object.original_url || params[:original_url]), class: "pure-input-2-3" %>
 
   <%= f.label :remote_image_url %>
   <%= f.text_field :remote_image_url, value: nil, class: "pure-input-2-3", placeholder: t('.image_placeholder') %>
-  <% if @recipe.image %>
-    <%= image_tag @recipe.image.thumb.url %>
-  <% end %>
 
   <%= f.label :text %>
-  <%= f.text_area :text, class: "pure-input-2-3", rows: 11 %>
+  <%= f.text_area :text, class: "pure-input-2-3", rows: 11, placeholder: t('.instructions') %>
 
-  <h3><%= t('.ingredients') %>:</h3>
-
+  <%= f.label :ingredients_text %>
   <% if @recipe.ingredients.empty? %>
-    <%= f.label :ingredients_text %>
-    <%= f.text_area :ingredients_text, class: "pure-input-2-3", rows: 8 %>
+    <%= f.text_area :ingredients_text, class: "pure-input-2-3", rows: 8, placeholder: t('.ingredients') %>
   <% else %>
 
     <table class="ingredients">

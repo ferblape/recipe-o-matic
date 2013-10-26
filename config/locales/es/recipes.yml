@@ -10,7 +10,7 @@ es:
       ingredients: Ingredientes
     new:
       new: Guarda una nueva receta
-      help: Introduce la URL de la receta y nuestro robot la intentará guardar
+      help: Introduce la URL de la receta y trataremos de traernos la receta
       save: Guardar
       saving: Guardando
       alternative: También puedes
@@ -29,8 +29,9 @@ es:
       delete_ingredient: '- borrar'
       delete: Eliminar
       image_placeholder: 'URL de una imagen'
-      ingredients: Ingredientes
+      instructions: "Escribe las instrucciones usando Markdown"
+      ingredients: "Pega o escribe la lista de ingredientes, uno por línea"
     create:
       empty_url: La URL no puede estar vacía
-      no_adapter: No se ha podido procesar la URL<br>%{url}
+      no_adapter: No se ha podido procesar la URL <code>%{url}</code>. Crea la receta a mano.
 

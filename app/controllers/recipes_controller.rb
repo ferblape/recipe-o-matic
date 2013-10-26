@@ -53,7 +53,7 @@ class RecipesController < ApplicationController
     end
   rescue RecipeFetcher::Base::NoAdapter
     flash[:alert] = t('.no_adapter', url: recipe_params[:original_url]).html_safe
-    redirect_to new_recipe_path
+    redirect_to new_form_recipes_path(original_url: recipe_params[:original_url])
   rescue => e
     flash[:alert] = e.message
     redirect_to (@recipe && !@recipe.new_record?) ? recipe_path(@recipe) : new_recipe_path

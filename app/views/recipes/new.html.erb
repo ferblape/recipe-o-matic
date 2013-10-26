@@ -9,5 +9,15 @@
     <%= f.button t('.save'), class: 'pure-button pure-button-primary pure-button-small', 'data-disable-with' => t('.saving') + '…' %>
   <% end %>
 
+  <div class="info">
+    <p>De momento sólo están soportados estos sitios:</p>
+    <ul>
+      <li>No más de mamá - <code>http://www.nomasdemama.com/</code></li>
+      <li>Mumumio - <code>http://www.mumumio.com/recetas/</code></li>
+      <li>Recetas de mamá - <code>http://www.recetasdemama.es/</code></li>
+    </ul>
+    <p>Si la receta es de otra web tienes que dar de alta la receta a mano.</p>
+  </div>
+
   <p><%= t('.alternative') %> <%= link_to(t('.manually'), new_form_recipes_path) %>.</p>
 </div>

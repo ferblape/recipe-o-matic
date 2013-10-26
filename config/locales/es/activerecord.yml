@@ -9,10 +9,10 @@ es:
       recipe: 
         name: Nombre
         text: Preparación
-        original_url: URL Original
+        original_url: URL de la receta original (si la hubiera)
         image: Imagen
         remote_image_url: Imagen
-        ingredients_text: (Pega o escribe la lista de ingredientes)
+        ingredients_text: Ingredientes
       food:
         name: Nombre
         plural_name: Nombre en plural
