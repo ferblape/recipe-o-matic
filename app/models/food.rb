@@ -6,7 +6,10 @@ class Food < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
-  scope :popular, -> { select('distinct(foods.*), count(recipes.id) as count').
+  scope :listable, -> { where(skip_from_lists: false) }
+
+  scope :popular, -> { listable.
+                         select('distinct(foods.*), count(recipes.id) as count').
                          order('count DESC').
                          joins(:recipes, :ingredients).
                          group('foods.id, recipes.id').

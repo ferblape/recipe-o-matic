@@ -47,6 +47,6 @@ class Admin::FoodsController < ApplicationController
   end
 
   def food_params
-    params.require(:food).permit(:name, :plural_name)
+    params.require(:food).permit(:name, :plural_name, :skip_from_lists)
   end
 end

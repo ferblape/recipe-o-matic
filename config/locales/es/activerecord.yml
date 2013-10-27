@@ -16,6 +16,7 @@ es:
       food:
         name: Nombre
         plural_name: Nombre en plural
+        skip_from_lists: Ocultar en listados
       ingredient:
         amount: Cantidad
         unit: Unidad
