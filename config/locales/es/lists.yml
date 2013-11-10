@@ -14,5 +14,13 @@ es:
       no_results: No hay resultados
       result: resultado
       results: resultados
+      placeholder: Escribe el nombre de una receta...
     ingredient_presenter:
       of: de
+    index:
+      recipes:
+        one: "%{count} receta"
+        other: "%{count} recetas"
+      ingredients:
+        one: "%{count} ingrediente"
+        other: "%{count} ingredientes"

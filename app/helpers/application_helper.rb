@@ -24,6 +24,14 @@ module ApplicationHelper
       title << t('.new_recipe') if action_name == 'new' || action_name == 'new_form'
     end
 
+    if controller_name == 'lists'
+      if action_name == 'index'
+        title << t('.lists')
+      end
+
+      title << @list.name if @list
+    end
+
     title << 'mis recetas'
     title.compact.join(' — ')
   end

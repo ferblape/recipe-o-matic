@@ -1,0 +1,48 @@
+dl.lists {
+}
+
+.lists a,
+.lists a:hover {
+  text-decoration: none;
+  font-size: 1.4em;
+  font-family: "chaparral-pro-1","chaparral-pro-2",Georgia, Times, "Times New Roman", serif;
+  color: #333;
+  font-weight: nornal;
+}
+
+.lists dt {
+  margin-top: 20px;
+  list-style-type: square;
+}
+
+.lists dd {
+  margin-left: 0;
+  color: #555;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.list {
+  width: 650px;
+  font: 16px/23px Georgia,Serif;
+  color: #444;
+}
+
+.list h2 {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  color: #222;
+}
+
+.list a,
+.list a:hover {
+  color: #444;
+}
+
+.list input {
+  font: 16px/23px Georgia,Serif;
+  color: #999;
+  font-style: italic;
+  margin-left: 24px;
+}
+

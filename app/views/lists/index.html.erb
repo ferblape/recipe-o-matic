@@ -1,5 +1,8 @@
-<ul>
+<dl class="lists">
   <% @lists.each do |list| %>
-    <li><%= link_to(list.name, list_path(list)) %></li>
+    <dt><%= link_to(list.name, list_path(list)) %></dd>
+    <dd>
+      <%= t('.recipes', count: list.recipes.count) %> · <%= t('.ingredients', count: list.ingredients.size) %>
+    </dd>
   <% end %>
-</ul>
+</dl>
