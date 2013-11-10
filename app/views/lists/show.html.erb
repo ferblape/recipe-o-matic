@@ -3,7 +3,7 @@
 
   <h3><%= t('.recipes') %></h3>
 
-  <ul>
+  <ul id="recipes">
     <% @list.recipes.each do |recipe| %>
       <li><%= link_to(recipe.name, recipe_path(recipe)) %></li>
     <% end %>
@@ -11,8 +11,10 @@
 
   <input name="term" id="recipe" size="60" data-behaviour="autocomplete-recipe" placeholder="<%= t('.placeholder') %>" />
 
+  <div id="recipes"></div>
+
   <h3><%= t('.ingredients') %></h3>
-  <ul>
+  <ul id="ingredients">
     <% @list.ingredients.each do |list_ingredient| %>
       <li><%= format_list_ingredient(list_ingredient) %></li>
     <% end %>
@@ -20,66 +22,35 @@
 
   <script>
     $(function() {
-      $( "#recipe" ).autocomplete({
+      $("#recipe").autocomplete({
+        appendTo: "#recipes",
         messages: {
           noResults: '<%= t('.no_results') %>',
           results: function( amount ) {
             return amount + ( amount > 1 ? " <%= t('.results') %>" : " <%= t('.result') %>" );
           }
         },
-
-        response : function( items ) {
-          var ul = this.menu.element.empty();
-          this._renderMenu( ul, items );
-          this.isNewMenu = true;
-          this.menu.refresh();
-
-          // size and position menu
-          ul.show();
-          this._resizeMenu();
-          ul.position( $.extend({
-            of: this.element
-          }, this.options.position ));
-
-          if ( this.options.autoFocus ) {
-            this.menu.next();
-          }
-        },
-
-        _resizeMenu: function() {
-          var ul = this.menu.element;
-          ul.outerWidth( Math.max(
-          // Firefox wraps long text (possibly a rounding bug)
-          // so we add 1px to avoid the wrapping (#7513)
-          ul.width( "" ).outerWidth() + 1,
-          this.element.outerWidth()
-          ) );
-        },
-
-        _renderMenu: function( ul, items ) {
-          var that = this;
-          $.each( items, function( index, item ) {
-            that._renderItemData( ul, item );
-          });
-        },
-
-        _renderItemData: function( ul, item ) {
-          return this._renderItem( ul, item ).data( "ui-autocomplete-item", item );
-        },
-
-        _renderItem: function( ul, item ) {
-          console.log(item.name);
-          return $( "<li>" )
-          .append( $( "<a>" ).text( item.vname ) )
-            .appendTo( ul );
-        },
-
         source: "<%= recipes_path %>",
         minLength: 2,
         select: function( event, ui ) {
-          log( ui.item ?
+          console.log( ui.item ?
           "Selected: " + ui.item.value + " aka " + ui.item.id :
           "Nothing selected, input was " + this.value );
+        },
+        select: function( event, ui ){
+          $.ajax({
+            type: "POST",
+            url: '<%= recipes_list_path(@list) %>',
+            data: {recipe_id: ui.item.value},
+            dataType: 'json',
+            success: function(data, textStatus, jqXHR){
+              var $recipeLink = $("<li><a href=\"" + data.href + "\">"+ data.label + "</a></li>");
+              $('#recipes').append($recipeLink);
+            }
+          });
+        },
+        close: function(){
+          $("#recipe").val(null);
         }
       });
     });

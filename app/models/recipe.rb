@@ -45,6 +45,10 @@ class Recipe < ActiveRecord::Base
     slug
   end
 
+  def as_json(options = nil)
+    {label: self.name, value: self.id}
+  end
+
   private
 
   def set_text_html

@@ -21,13 +21,17 @@ class ListsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def recipes
+    @list = List.find(params[:id])
+    if recipe = Recipe.find(params[:recipe_id])
+      @list.recipes << recipe
+    end
 
-  def update
-  end
-
-  def delete
+    respond_to do |format|
+      format.html do
+        render json: recipe.as_json.merge({href: recipe_path(recipe)}).to_json
+      end
+    end
   end
 
   private

@@ -15,5 +15,7 @@ RecipeOMatic::Application.routes.draw do
     get :suggestion, on: :collection, path: 'sugerencia'
   end
 
-  resources :lists, path: 'listas'
+  resources :lists, path: 'listas' do
+    post 'recipes', on: :member
+  end
 end
