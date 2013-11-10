@@ -157,40 +157,38 @@ class TextToIngredientProcessor
     return false if @previous_state != STATES[:amount] &&
                     @previous_state != STATES[:unit]
 
-    Ingredient::SUPPORTED_UNITS.each do |unit|
-      return true if detected?(unit, token)
-    end
-
-    return false
-  end
-
-  def detected?(unit, token)
-    Ingredient::SUPPORTED_UNITS.include?(normalize_unit(token))
+    supported_units.include?(token)
   end
 
   def normalize_unit(token)
-    equivalences = {
-      'g' => 'gr',
-      'gramo' => 'gr',
-      'kilo' => 'kg',
-      'kilogramo' => 'kg',
-      'cucharadita' => 'cucharada pequeña',
-      'cda' => 'cucharada',
-      'cdas' => 'cucharada',
-      'litros' => 'l',
-      'litro' => 'l'
-    }
-
     token = token.dup.split(' ').map do |t|
       t.singularize
     end.join(' ')
 
-    if equivalences.keys.include?(token)
-      return equivalences[token]
-    elsif token =~ /\.\z/
-      return token.gsub('.', '')
+    if units.include?(token)
+      token
     else
-      return token
+      unit_equivalences[token] || token
     end
+  end
+
+  def supported_units
+    @supported_units ||= I18n.t('units').keys.map(&:to_s) + I18n.t('units').values.flatten.map(&:to_s)
+  end
+
+  def units
+    @units ||= I18n.t('units').keys.map(&:to_s)
+  end
+
+  def unit_equivalences
+    @unit_equivalences ||= begin
+                             h = {}
+                             I18n.t('units').invert.each do |keys,v|
+                               keys.each do |k|
+                                 h[k.to_s] = v.to_s
+                               end
+                             end
+                             h
+                           end
   end
 end

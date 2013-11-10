@@ -2,21 +2,6 @@ class Ingredient < ActiveRecord::Base
   belongs_to :recipe
   belongs_to :food, autosave: true
 
-  SUPPORTED_UNITS = [
-    'gr', 'g',
-    'kg', 'mg',
-    'ml', 'l',
-    'puñado', 'trozo',
-    'cucharada',
-    'cucharada pequeña',
-    'pequeña',
-    'grande',
-    'taza', 'copa',
-    'grano', 'hoja',
-    'pastilla', 'vaso',
-    'rama', 'filete'
-  ]
-
   def self.build_from_raw(str, recipe)
     processor = TextToIngredientProcessor.new(str)
     processor.process!

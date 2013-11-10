@@ -1,0 +1,59 @@
+es:
+  units:
+    gr:
+      - gr.
+      - grs
+      - grs.
+      - g
+      - gramo
+      - gramos
+    kg:
+      - kg.
+      - kgs
+      - kgs.
+      - k
+      - kilo
+      - kilos
+      - kilogramo
+      - kilogramos
+    ml:
+      - ml.
+      - mls.
+      - mililitro
+      - mililitros
+    l:
+      - l.
+      - litro
+      - litros
+    puñado:
+      - puñados
+    trozo:
+      - trozos
+    cucharada:
+      - cucharadas
+      - cda
+      - cdas
+      - cda.
+      - cdas.
+    cucharada grande:
+      - cucharadas grandes
+    cucharada pequeña:
+      - cucharadas pequeñas
+      - cucharadita
+    taza:
+      - tazas
+    copa:
+      - copas
+    grano:
+      - granos
+    hoja:
+      - hojas
+    pastilla:
+      - pastillas
+    vaso:
+      - vasos
+    rama:
+      - ramas
+    filete:
+      - filetes
+
