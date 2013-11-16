@@ -15,9 +15,7 @@
 
   <h3><%= t('.ingredients') %></h3>
   <ul id="ingredients">
-    <% @list.ingredients.each do |list_ingredient| %>
-      <li><%= format_list_ingredient(list_ingredient) %></li>
-    <% end %>
+    <%= format_list_ingredients(@list.ingredients) %>
   </ul>
 
   <script>

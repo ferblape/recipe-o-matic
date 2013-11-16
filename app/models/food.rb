@@ -24,9 +24,17 @@ class Food < ActiveRecord::Base
     food.destroy
   end
 
+  def self.find_by_name(name)
+    where("name = ? OR plural_name = ?", name, name).first
+  end
+
   def self.find_or_initialize_by_name(name)
     Food.where("name = ? OR plural_name = ?", name, name).first ||
       Food.new(name: name, plural_name: name)
+  end
+
+  def plural_name
+    read_attribute(:plural_name).blank? ? read_attribute(:name) : read_attribute(:plural_name)
   end
 
   private

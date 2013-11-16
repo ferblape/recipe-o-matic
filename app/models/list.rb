@@ -18,8 +18,8 @@ class List < ActiveRecord::Base
       end
     end
 
-    ingredients_table.map do |food_name, row|
-      row.map do |unit, amount|
+    ingredients_table.map do |food_name, units_and_amounts|
+      units_and_amounts.map do |unit, amount|
         [amount, unit, food_name]
       end.flatten
     end

@@ -1,17 +1,25 @@
 class IngredientPresenter
-  def initialize(amount, unit, food_name)
-    @amount = amount
-    @unit = unit
-    @food_name = food_name
+  def initialize(list_of_ingredient)
+    @list_of_ingredient = list_of_ingredient
   end
 
   def to_list_ingredient
-    # If the amount in integer is different, keep the float
-    amount = @amount.to_i != @amount ? @amount : @amount.to_i
+    list = []
+    @list_of_ingredient.in_groups_of(3) do |item|
+      amount    = item.first
+      unit      = item.second
+      food      = Food.find_by_name(item.third)
 
-    unit = @unit.blank? ? nil : format_unit(@unit, amount)
+      # If the amount in integer is different, keep the float
+      amount = amount.to_i != amount ? amount : amount.to_i
+      amount = "" if amount == 0
 
-    [amount, unit, @food_name].compact.join(' ')
+      unit = unit.blank? ? "" : format_unit(unit, amount)
+
+      list << [amount, unit, (amount == 1 ? food.name : food.plural_name)].compact.join(' ')
+    end
+
+    list
   end
 
   private

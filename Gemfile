@@ -37,4 +37,5 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'fakeweb'
+  gem 'binding_of_caller'
 end
