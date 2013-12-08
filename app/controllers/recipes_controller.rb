@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_filter :admin_required, except: [:index, :show]
   before_filter :load_recipe, only: [:new, :edit, :update, :new_form]
 
   def index

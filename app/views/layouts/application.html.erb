@@ -8,12 +8,13 @@
 </head>
 <body>
   <div class="tools">
-    <%= link_to('⟵ ' + t('.admin'), admin_foods_path) %>
+    <% if admin? %>
+      <%= link_to('⟵ ' + t('.admin'), admin_foods_path) %>
+    <% end %>
   </div>
 
   <header>
     <h1><%= link_to('<span>chef</span> mis recetas'.html_safe, '/') %>
-    <!-- de <span class="username">blat</span></h1> -->
   </header>
 
   <div id="wrapper" class="pure-g">
@@ -21,7 +22,9 @@
       <div class="sidebar">
         <h3><%= link_to_unless(controller_name == 'recipes' && action_name == 'index' && params[:term].blank?, t('.recipes'), recipes_path) %></h3>
         <ul>
+          <% if admin? %>
           <li><%= link_to_unless(new_recipe_action?, t('.new'), new_recipe_path) %></li>
+          <% end %>
           <li><%= link_to(t('.suggestion'), suggestion_recipes_path) %></li>
           <li>
             <%= form_tag(recipes_path, method: :get) do %>
@@ -30,17 +33,21 @@
           </li>
         </ul>
 
+        <% if admin? %>
         <h4><%= t('.by_ingredient') %></h4>
         <ul>
         <% Food.popular.each do |food| %>
           <li><%= link_to("#{food.name} (#{food.count})", food_recipes_path(food), title: t('.recipes_with_food', name: food.name)) %></li>
         <% end %>
         </ul>
+        <% end %>
 
+        <% if admin? %>
         <h3><%= link_to_unless_current(t('.lists'), lists_path) %></h3>
         <ul>
           <li><%= link_to_unless_current(t('.new_list'), new_list_path) %></li>
         </ul>
+        <% end %>
       </div>
     </div>
 

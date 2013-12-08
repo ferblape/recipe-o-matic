@@ -19,6 +19,8 @@ gem 'mini_magick'
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
 gem 'rake', '= 0.9.6'
 gem 'redcarpet'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'capistrano', '~> 2.x.x'

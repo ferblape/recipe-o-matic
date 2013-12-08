@@ -11,7 +11,9 @@
   <p class="meta">
     <%= t('.added') %>
     <span class="date"><%= l(@recipe.created_at, format: :short) %></span>
-    ⎯ <%= link_to('✎ ' + t('.edit'), edit_recipe_path(@recipe.slug)) %>
+    <% if admin? %>
+      ⎯ <%= link_to('✎ ' + t('.edit'), edit_recipe_path(@recipe.slug)) %>
+    <% end %>
   </p>
 
   <h3><%= t('.ingredients') %></h3>

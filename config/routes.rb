@@ -6,6 +6,9 @@ RecipeOMatic::Application.routes.draw do
 
   root to: redirect('/recetas')
 
+  get '/auth/twitter/callback', to: 'sessions#authenticate'
+  get '/logout', to: 'sessions#logout'
+
   resources :foods, path: 'alimentos' do
     resources :recipes, only: [:index], path: 'recetas'
   end
