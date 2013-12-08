@@ -16,7 +16,7 @@ set :keep_releases, 5
 set :user, "ubuntu"
 set :port, "2222"
 set :deploy_to, "/var/www/#{application}"
-set :appserver, "198.211.121.11"
+set :appserver, "146.185.183.46"
 set :rake, "/usr/bin/env rake"
 set :asset_env, ""
 
