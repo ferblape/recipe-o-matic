@@ -2,8 +2,8 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@ferblape">
   <meta name="twitter:title" content="<%= @recipe.name %>">
-  <meta name="twitter:description" content="<%= @recipe.name %>">
-  <meta name="twitter:image" content="<%= @recipe.image.big.url %>">
+  <meta name="twitter:description" content="<%= @recipe.ingredients.limit(5).map{|i| i.food.name }.join(', ') %>…">
+  <meta name="twitter:image" content="http://recetas.blat.es<%= @recipe.image.big.url %>">
 <% end %>
 
 <article class="recipe h-recipe">
