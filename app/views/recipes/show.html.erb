@@ -1,3 +1,11 @@
+<% content_for(:head) do %>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@ferblape">
+  <meta name="twitter:title" content="<%= @recipe.name %>">
+  <meta name="twitter:description" content="<%= @recipe.name %>">
+  <meta name="twitter:image" content="<%= @recipe.image.big.url %>">
+<% end %>
+
 <article class="recipe h-recipe">
   <h2 class="p-name"><%= @recipe.name %></h2>
   <% if @recipe.original_url.present? %>
