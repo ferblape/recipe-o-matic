@@ -19,6 +19,6 @@ es:
       edit: Editar receta
       admin: Administrador
       recipes_with_food: Recetas con %{name}
-      suggestion: Sugerencia
+      suggestion: Receta aleatoria ⤻
       lists: Listas
 
