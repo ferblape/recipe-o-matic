@@ -1,5 +1,5 @@
 require "capistrano-rbenv"
-set :rbenv_ruby_version, "2.0.0-p247"
+set :rbenv_ruby_version, "2.1.0"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
