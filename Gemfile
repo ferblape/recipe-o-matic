@@ -37,7 +37,6 @@ group :development, :test do
   gem 'capybara-webkit'
   gem 'steak'
   gem 'launchy'
-  gem 'database_cleaner'
   gem 'fakeweb'
   gem 'binding_of_caller'
 end
