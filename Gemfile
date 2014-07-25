@@ -1,24 +1,35 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.1'
+gem 'rails'
+
 gem 'pg'
-gem 'sass-rails', '~> 4.0.0'
-gem 'uglifier',   '>= 1.3.0'
+
+gem 'sass-rails'
+gem 'uglifier'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+
 gem 'turbolinks'
-gem 'jbuilder', '~> 1.2'
+gem 'jquery-turbolinks'
+
+gem 'jbuilder'
+
 gem 'nokogiri'
+
 gem 'inflections', path: 'vendor/inflections'
 gem 'rubypython'
-gem 'jquery-turbolinks'
 gem 'rails-i18n'
+
 gem 'carrierwave'
 gem 'mini_magick'
+
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
+
 gem 'rake',       '= 10.1.0'
+
 gem 'redcarpet'
+
 gem 'omniauth'
 gem 'omniauth-twitter'
 
@@ -32,7 +43,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'mocha', require: false
   gem 'rspec-rails'
-  gem 'rspec-instafail'
   gem 'byebug'
   gem 'capybara-webkit'
   gem 'steak'
