@@ -66,4 +66,6 @@ ActiveRecord::Schema.define(version: 20131027092429) do
     t.string   "slug"
   end
 
+  add_index "recipes", ["slug"], name: "index_recipes_on_slug", unique: true, using: :btree
+
 end

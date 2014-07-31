@@ -2,16 +2,8 @@ class Ingredient < ActiveRecord::Base
   belongs_to :recipe
   belongs_to :food, autosave: true
 
-  def self.build_from_raw(str, recipe)
-    processor = TextToIngredientProcessor.new(str)
-    processor.process!
-
-    recipe.ingredients.build do |ingredient|
-      ingredient.text      = processor.text.downcase
-      ingredient.amount    = processor.amount
-      ingredient.unit      = processor.unit
-      ingredient.food_name = processor.food_name
-    end
+  def self.build_from_raw(raw_string)
+    ingredient = TextToIngredientProcessor.new(raw_string, Ingredient.new).process
   end
 
   def food_name=(value)

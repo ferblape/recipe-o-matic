@@ -1,35 +1,31 @@
 class TextToIngredientProcessor
-  attr_reader :amount, :unit, :food_name
+  include UnitToken
+  include AmountToken
+  include FoodNameToken
 
-  def initialize(str)
-    @str = str.gsub(/\A([^0-9a-zA-Z]+)/, '')
+  def initialize(raw_string, ingredient)
+    @ingredient = ingredient
 
+    @text = raw_string.gsub(/\A([^0-9a-zA-Z]+)/, '').downcase
     @amount = nil
-    @unit = nil
-    @food_name = nil
+    @unit = []
+    @food_name = []
 
     @current_state = STATES[:root]
   end
 
-  def text
-    @str
-  end
-
-  # this method returns an array [amount, unit, food_name],
-  # where:
-  #   - amount is a float
-  #   - unit is a string with the unit of measurement
-  #   - food_name is the name of the food
-  def process!
-    tokens = tokenize(@str)
+  def process
+    tokens = tokenize(@text)
 
     while tokens.any?
-      token = tokens.shift
-      process_token(token)
+      process_token(tokens.shift)
     end
 
-    @unit = @unit.join(' ') if @unit && @unit.any?
-    @food_name = @food_name.join(' ') if @food_name && @food_name.any?
+    @ingredient.text = @text
+    @ingredient.unit = @unit.any? ? @unit.join(' ') : nil
+    @ingredient.amount = @amount
+    @ingredient.food_name = @food_name.join(' ')
+    @ingredient
   end
 
   private
@@ -42,153 +38,46 @@ class TextToIngredientProcessor
     finish: 4
   }
 
-  AMOUNTS_REGEXP = /\A(\d+[\.\/\-]?[\d+]?[\s*(\d+[\.\/\-]?[\d+]?)]*)/
-
-  NATURAL_AMOUNTS = {
-    'uno'    => 1.0,
-    'un'     => 1.0,
-    'dos'    => 2.0,
-    'tres'   => 3.0,
-    'cuatro' => 4.0
-  }
-
   def tokenize(str)
     # remove text inside parenthesis
     str = str.gsub(/(\([^\)]+\))/,'')
 
-    tokens = []
-    str.split(' ').each do |token|
-      token = token.downcase.strip
+    [].tap do |tokens|
+      str.split(' ').each do |token|
+        token = token.downcase.strip
 
-      if token =~ AMOUNTS_REGEXP
-        if $1.length != token.length
-          tokens << $1
-          tokens << token.gsub($1, '').strip
-          next
+        if token =~ AMOUNTS_REGEXP
+          if $1.length != token.length
+            tokens << $1
+            tokens << token.gsub($1, '').strip
+            next
+          end
         end
+
+        tokens << token
       end
-
-      tokens << token
     end
-
-    tokens
   end
 
   def process_token(token)
     @previous_state = @current_state
 
-    kind_of_token = detect_kind_of_token(token)
-
-    if kind_of_token == :amount
-      @current_state = STATES[:amount]
-      process_amount_token(token)
-    elsif kind_of_token == :unit
-      @current_state = STATES[:unit]
-      process_unit_token(token)
-    elsif kind_of_token == :food_name
-      @current_state = STATES[:food_name] if @previous_state != STATES[:finish]
-      process_food_name_token(token)
+    case detect_kind_of_token(token)
+      when :amount
+        @current_state = STATES[:amount]
+        process_amount_token(token)
+      when :unit
+        @current_state = STATES[:unit]
+        process_unit_token(token)
+      when :food_name
+        @current_state = STATES[:food_name] if @previous_state != STATES[:finish]
+        process_food_name_token(token)
     end
   end
 
   def detect_kind_of_token(token)
-    return :food_name if @current_state == STATES[:food_name] ||
-                          @current_state == STATES[:finish]
-
-    if detect_amount(token)
-      :amount
-    elsif detect_unit(token)
-      :unit
-    else
-      :food_name
-    end
-  end
-
-  def process_amount_token(token)
-    # Detect fractions
-    if token =~ /\A\d+\/\d+\z/
-      amount = case token
-        when '1/2' then 0.5
-        when '1/3' then 0.3
-        when '2/3' then 0.6
-        when '1/4' then 0.25
-        when '3/4' then 0.75
-      end
-    elsif NATURAL_AMOUNTS.keys.include?(token)
-      amount = NATURAL_AMOUNTS[token]
-    else
-      amount = token.to_f
-    end
-
-    if @amount.nil?
-      @amount = amount
-    else
-      @amount += amount
-    end
-  end
-
-  def process_unit_token(token)
-    @unit ||= []
-    @unit << normalize_unit(token)
-  end
-
-  def process_food_name_token(token)
-    return if @current_state == STATES[:finish]
-
-    @food_name ||= []
-    if token == 'de' && @previous_state == STATES[:unit]
-      return
-    end
-
-    if token == 'o' && @previous_state == STATES[:food_name]
-      @current_state = STATES[:finish]
-      return
-    end
-
-    @food_name << token
-  end
-
-  def detect_amount(token)
-    (@previous_state == STATES[:root] || @previous_state == STATES[:amount]) &&
-       (token =~ AMOUNTS_REGEXP || NATURAL_AMOUNTS.keys.include?(token))
-  end
-
-  def detect_unit(token)
-    return false if @previous_state != STATES[:amount] &&
-                    @previous_state != STATES[:unit]
-
-    supported_units.include?(token)
-  end
-
-  def normalize_unit(token)
-    token = token.dup.split(' ').map do |t|
-      t.singularize
-    end.join(' ')
-
-    if units.include?(token)
-      token
-    else
-      unit_equivalences[token] || token
-    end
-  end
-
-  def supported_units
-    @supported_units ||= I18n.t('units').keys.map(&:to_s) + I18n.t('units').values.flatten.map(&:to_s)
-  end
-
-  def units
-    @units ||= I18n.t('units').keys.map(&:to_s)
-  end
-
-  def unit_equivalences
-    @unit_equivalences ||= begin
-                             h = {}
-                             I18n.t('units').invert.each do |keys,v|
-                               keys.each do |k|
-                                 h[k.to_s] = v.to_s
-                               end
-                             end
-                             h
-                           end
+    return :amount     if amount_token?(token)
+    return :unit       if unit_token?(token)
+    return :food_name
   end
 end

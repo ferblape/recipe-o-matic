@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'steak'
 require 'capybara/rails'
 require 'capybara/dsl'

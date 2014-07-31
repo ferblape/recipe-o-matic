@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe TextToIngredientProcessor do
 
@@ -50,12 +50,11 @@ describe TextToIngredientProcessor do
   describe '#process' do
     ingredient_examples.each do |str, values|
       it "should return proper values for #{str}" do
-        subject = TextToIngredientProcessor.new(str)
-        subject.process!
+        ingredient = TextToIngredientProcessor.new(str, Ingredient.new).process
 
-        subject.amount.should    == values.first
-        subject.unit.should      == values.second
-        subject.food_name.should == values.third
+        expect(ingredient.amount).to eq(values.first)
+        expect(ingredient.unit).to eq(values.second)
+        expect(ingredient.food.name).to eq(values.third)
       end
     end
   end
