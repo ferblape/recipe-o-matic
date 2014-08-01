@@ -1,15 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-
 gem 'pg'
+gem 'rake', '= 10.1.0'
 
 gem 'sass-rails'
 gem 'uglifier'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 
@@ -25,8 +24,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
-
-gem 'rake',       '= 10.1.0'
 
 gem 'redcarpet'
 
