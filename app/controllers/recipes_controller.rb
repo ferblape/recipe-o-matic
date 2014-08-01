@@ -27,9 +27,11 @@ class RecipesController < ApplicationController
   end
 
   def suggestion
-    slug = Recipe.pluck(:slug).to_a.shuffle.first
-
-    redirect_to action: :show, id: slug
+    if slug = Recipe.pluck(:slug).to_a.shuffle.first
+      redirect_to action: :show, id: slug
+    else
+      redirect_to '/'
+    end
   end
 
   def new
