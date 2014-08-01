@@ -13,9 +13,9 @@ describe Food do
       Food.merge f2, into: f1
 
       i2.reload
-      i2.food.should == f1
+      expect(i2.food).to eq(f1)
 
-      Food.where(id: f2.id).first.should be_nil
+      expect(Food.where(id: f2.id).first).to be_nil
     end
   end
 
@@ -23,8 +23,8 @@ describe Food do
     context 'when the food doesn´t exist' do
       it 'should return a new instance' do
         new_food = Food.find_or_initialize_by_name('wadus')
-        new_food.should be_new_record
-        new_food.name.should == 'wadus'
+        expect(new_food).to be_new_record
+        expect(new_food.name).to eq('wadus')
       end
     end
 
@@ -34,11 +34,11 @@ describe Food do
       end
 
       it 'should return the existing food searching by name' do
-        Food.find_or_initialize_by_name('singular name').should == @food
+        expect(Food.find_or_initialize_by_name('singular name')).to eq(@food)
       end
 
       it 'should return the existing food searching by plural name' do
-        Food.find_or_initialize_by_name('plural name').should == @food
+        expect(Food.find_or_initialize_by_name('plural name')).to eq(@food)
       end
     end
   end

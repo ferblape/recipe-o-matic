@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe RecipeFetcher::Base do
   context 'when the url is supported by any adapter' do
@@ -6,8 +6,8 @@ describe RecipeFetcher::Base do
     let(:subject)    { RecipeFetcher::Base.new(recipe_url) }
 
     it 'calls an adapter for a url' do
-      subject.adapter.should be_kind_of(RecipeFetcher::Adapters::NoMasDeMama)
-      subject.url.should == recipe_url
+      expect(subject.adapter).to be_kind_of(RecipeFetcher::Adapters::NoMasDeMama)
+      expect(subject.url).to eq(recipe_url)
     end
   end
 

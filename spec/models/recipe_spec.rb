@@ -12,11 +12,12 @@ aceite
 2 patatas
 INGREDIENTS
 
-        recipe.ingredients.size.should == 4
+        expect(recipe.ingredients.length).to eq(4)
+
         ingredient = recipe.ingredients.first
-        ingredient.text.should == '100 gr de jamón'
-        ingredient.amount.should == 100
-        ingredient.unit.should == 'gr'
+        expect(ingredient.text).to eq('100 gr de jamón')
+        expect(ingredient.amount).to eq(100)
+        expect(ingredient.unit).to eq('gr')
         expect(ingredient).to be_new_record
       end
     end

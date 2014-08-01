@@ -32,8 +32,8 @@ class Recipe < ActiveRecord::Base
     ingredients = ingredients.split("\n") if ingredients.is_a?(String)
     self.ingredients.clear if self.ingredients.any?
 
-    ingredients.each do |ingredient_line|
-      Ingredient.build_from_raw(ingredient_line, self)
+    self.ingredients = ingredients.map do |ingredient_line|
+      Ingredient.build_from_raw(ingredient_line)
     end
   end
 
