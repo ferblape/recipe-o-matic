@@ -9,40 +9,34 @@ class TextToIngredientProcessor
     end
 
     def unit_token?(token)
-      return false if @previous_state != STATES[:amount] && @previous_state != STATES[:unit]
+      # use a @previous token?
+      return false if @previous_state != STATES[:amount]# && @previous_state != STATES[:unit]
 
       supported_units.include?(token)
     end
 
     def normalize_unit(token)
-      token = token.dup.split(' ').map do |t|
+      # Singularize all the token words
+      token = token.split(' ').map do |t|
         t.singularize
       end.join(' ')
 
-      if units.include?(token)
-        token
-      else
-        unit_equivalences[token] || token
-      end
+      unit_equivalences[token] || token
     end
 
     def supported_units
-      @supported_units ||= I18n.t('units').keys.map(&:to_s) + I18n.t('units').values.flatten.map(&:to_s)
-    end
-
-    def units
-      @units ||= I18n.t('units').keys.map(&:to_s)
+      @supported_units ||= I18n.t('units').flatten.flatten.map(&:to_s)
     end
 
     def unit_equivalences
       @unit_equivalences ||= begin
-        h = {}
-        I18n.t('units').invert.each do |keys,v|
-          keys.each do |k|
-            h[k.to_s] = v.to_s
+        {}.tap do |h|
+          I18n.t('units').invert.each do |keys,v|
+            keys.each do |k|
+              h[k.to_s] = v.to_s
+            end
           end
         end
-        h
       end
     end
   end
