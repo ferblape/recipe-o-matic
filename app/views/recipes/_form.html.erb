@@ -16,6 +16,18 @@
   <%= f.label :ingredients_text %>
   <%= f.text_area :ingredients_text, class: "pure-input-1", rows: (@recipe.ingredients.empty? ? 8 : @recipe.ingredients.size + 2), placeholder: t('.ingredients') %>
 
+  <p>Metadata</p>
+
+  <%= f.label :time %>
+  <%= f.select :time, Recipe::TIME_VALUES, prompt: '-' %>
+
+  <%= f.label :season %>
+  <%= f.select :season, Recipe::SEASON_VALUES, prompt: '-' %>
+
+  <%= f.label :vegetarian %>
+  <%= f.check_box :vegetarian %>
+
+  <br>
   <br>
   <%= f.button (@recipe.new_record? ? t('.create') : t('.update')), class: "pure-button pure-button-primary pure-button-xlarge" %>
   <%= link_to t('.cancel'), recipes_path %>

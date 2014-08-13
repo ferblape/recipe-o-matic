@@ -24,6 +24,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'textacular', '~> 3.0', require: 'textacular/rails'
+gem 'hstore_accessor'
 
 gem 'redcarpet'
 

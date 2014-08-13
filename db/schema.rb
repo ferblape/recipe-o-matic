@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027092429) do
+ActiveRecord::Schema.define(version: 20140811120832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "foods", force: true do |t|
     t.string  "name"
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 20131027092429) do
     t.datetime "updated_at"
     t.text     "text_html"
     t.string   "slug"
+    t.hstore   "metadata"
   end
 
   add_index "recipes", ["slug"], name: "index_recipes_on_slug", unique: true, using: :btree

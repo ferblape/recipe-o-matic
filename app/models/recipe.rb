@@ -49,6 +49,19 @@ class Recipe < ActiveRecord::Base
     {label: self.name, value: self.id}
   end
 
+  #### Metadata
+
+  TIME_VALUES   = ['lunch', 'dinner', 'any']
+  SEASON_VALUES = ['spring', 'summer', 'autumn', 'winter', 'any']
+
+  hstore_accessor :metadata,
+    time: :string,
+    season: :string,
+    vegetarian: :boolean
+
+  validates :time, inclusion: { in: TIME_VALUES }, allow_nil: true
+  validates :season, inclusion: { in: SEASON_VALUES }, allow_nil: true
+
   private
 
   def set_text_html
