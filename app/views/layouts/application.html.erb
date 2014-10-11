@@ -45,6 +45,9 @@
         <% if admin? %>
         <h3><%= link_to_unless_current(t('.lists'), lists_path) %></h3>
         <ul>
+          <% List.last_created.each do |list| %>
+            <li><%= link_to(list.name, list_path(list)) %></li>
+          <% end %>
           <li><%= link_to_unless_current(t('.new_list'), new_list_path) %></li>
         </ul>
         <% end %>

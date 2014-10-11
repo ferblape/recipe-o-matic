@@ -10,12 +10,13 @@ class ListsController < ApplicationController
   end
 
   def new
+    @list.name = suggest_list_name
   end
 
   def create
     @list = List.new list_params
     if @list.save
-      redirect_to edit_list_path(@list)
+      redirect_to list_path(@list)
     else
       render 'new'
     end
@@ -42,5 +43,13 @@ class ListsController < ApplicationController
 
   def load_list
     @list = params[:id].present? ? List.find(params[:id]) : List.new
+  end
+
+  def suggest_list_name
+    from = Date.today
+    to   = from + 1.week
+    format = "%d-%b"
+
+    "Semana #{from.strftime(format).downcase} - #{to.strftime(format).downcase}"
   end
 end
