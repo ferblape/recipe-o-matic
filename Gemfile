@@ -32,8 +32,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 
 group :development, :test do
-  gem 'capistrano', '~> 2.x.x'
-  gem 'capistrano-rbenv'
+  gem 'mina'
   gem 'quiet_assets'
   gem 'thin'
   gem 'better_errors'

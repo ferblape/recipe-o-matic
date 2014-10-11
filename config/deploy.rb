@@ -1,58 +1,45 @@
-require "capistrano-rbenv"
-set :rbenv_ruby_version, "2.1.0"
+require 'mina/bundler'
+require 'mina/rails'
+require 'mina/git'
+require 'mina/rbenv'
 
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
-
-set :application, 'recipes'
+set :domain, 'blato01'
+set :deploy_to, '/var/www/recipes'
 set :repository, 'git@github.com:ferblape/recipe-o-matic.git'
+set :branch, 'master'
 
-set :branch, "master"
-set :scm, :git
-set :git_shallow_clone, 1
-set :scm_user, "ubuntu"
-set :use_sudo, false
-set :keep_releases, 5
-set :user, "ubuntu"
-set :port, "2222"
-set :deploy_to, "/var/www/#{application}"
-set :appserver, "146.185.183.46"
-set :rake, "/usr/bin/env rake"
-set :asset_env, ""
+set :shared_paths, ['config/database.yml', 'log', 'public/uploads', 'public/cache']
 
-role :app, appserver
-role :web, appserver
-role :db,  appserver, primary: true
-set :rails_env, "production"
+set :user, 'ubuntu'
+set :port, '2222'
+set :forward_agent, true
 
-after  "deploy:finalize_update", "symlinks"
-after  "deploy:finalize_update", "bundle:install"
-after  "deploy:create_symlink",  "run_migrations"
-after  "deploy",                 "deploy:cleanup"
-
-desc "Restart Application"
-deploy.task :restart, roles: [:app] do
-  run "touch #{current_path}/tmp/restart.txt"
+task :environment do
+  invoke :'rbenv:load'
 end
 
-desc "Run migrations"
-task :run_migrations, roles: [:app] do
-  run <<-CMD
-    cd #{current_path} &&
-    #{rake} RAILS_ENV=#{rails_env} db:migrate --trace
-  CMD
+task :setup => :environment do
+  queue! %[mkdir -p "#{deploy_to}/shared/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/config"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+
+  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
+  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
 end
 
-task :symlinks, roles: [:app] do
-  run <<-CMD
-    ln -s #{shared_path}/cache #{release_path}/public/;
-    ln -s #{shared_path}/uploads #{release_path}/public/;
-    cp #{shared_path}/database.yml #{release_path}/config/;
-  CMD
-end
+desc "Deploys the current version to the server."
+task :deploy => :environment do
+  deploy do
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:db_migrate'
+    invoke :'rails:assets_precompile'
 
-namespace :bundle do
-  task :install, roles: [:app] do
-    run "cd #{release_path} && /usr/bin/env bundle --gemfile #{release_path}/Gemfile --path #{shared_path}/bundle --deployment --quiet --binstubs #{shared_path}/bin --without development test"
+    to :launch do
+      queue "touch #{deploy_to}/tmp/restart.txt"
+    end
   end
 end
