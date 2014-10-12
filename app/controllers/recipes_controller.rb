@@ -3,13 +3,11 @@ class RecipesController < ApplicationController
   before_filter :load_recipe, only: [:new, :edit, :update, :new_form]
 
   def index
-    recipes = Recipe
-
     if params[:food_id]
       @food = Food.find(params[:food_id])
       recipes = @food.recipes
     elsif searching?
-      recipes = recipes.search(params[:term])
+      recipes = Recipe.search(params[:term])
     end
 
     @recipes = recipes.includes(ingredients: :food).sorted_by_creation
