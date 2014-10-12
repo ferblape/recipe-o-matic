@@ -154,7 +154,7 @@ GEM
     rake (10.1.0)
     redcarpet (3.1.2)
     ref (1.0.5)
-    rspec-core (3.1.6)
+    rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -250,7 +250,7 @@ DEPENDENCIES
   rubypython
   sass-rails
   steak
-  textacular (~> 3.0)
+  textacular
   therubyracer
   thin
   turbolinks
