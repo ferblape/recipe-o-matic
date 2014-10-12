@@ -7,6 +7,6 @@ class ListEntry < ActiveRecord::Base
   private
 
   def set_position
-    self.position = list.recipes.count + 1
+    self.position = list.recipes.length + 1
   end
 end

@@ -2,7 +2,7 @@
   <% @lists.each do |list| %>
     <dt><%= link_to(list.name, list_path(list)) %></dd>
     <dd>
-      <%= t('.recipes', count: list.recipes.count) %> · <%= t('.ingredients', count: list.ingredients.size) %>
+      <%= t('.recipes', count: list.recipes.length) %> · <%= t('.ingredients', count: list.ingredients.size) %>
     </dd>
   <% end %>
 </dl>

@@ -5,7 +5,7 @@ class List < ActiveRecord::Base
   has_many :recipes, through: :list_entries
 
   scope :sorted_by_creation, -> { order('created_at DESC') }
-  scope :last_created, -> { sorted_by_creation.limit(5) }
+  scope :last_created, -> { sorted_by_creation.limit(3) }
 
   def ingredients
     ingredients_table = {}

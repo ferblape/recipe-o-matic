@@ -1,6 +1,6 @@
 <div class="recipes">
   <% if searching? %>
-    <h2><%= t('.searching', q: params[:term], count: @recipes.count).html_safe %></h2>
+    <h2><%= t('.searching', q: params[:term], count: @recipes.length).html_safe %></h2>
   <% end %>
 
   <% if @food %>
