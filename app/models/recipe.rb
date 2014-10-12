@@ -52,12 +52,11 @@ class Recipe < ActiveRecord::Base
   #### Metadata
 
   TIME_VALUES   = ['lunch', 'dinner', 'any']
-  SEASON_VALUES = ['spring', 'summer', 'autumn', 'winter', 'any']
+  SEASON_VALUES = ['warm', 'cold', 'any']
 
-  hstore_accessor :metadata,
-    time: :string,
-    season: :string,
-    vegetarian: :boolean
+  hstore_accessor :metadata, time: :string,
+                             season: :string,
+                             vegetarian: :boolean
 
   validates :time, inclusion: { in: TIME_VALUES }, allow_nil: true
   validates :season, inclusion: { in: SEASON_VALUES }, allow_nil: true
