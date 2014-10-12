@@ -1,10 +1,7 @@
 <div class="recipe-entry">
   <%= link_to(image_tag(recipe.image.thumb.url, alt: recipe.name, height: 250, width: 650), recipe_path(recipe), title: recipe.name) %>
 
-  <p class="meta">
-    <%= t('.added') %>
-    <span class="date"><%= l(recipe.created_at, format: :short) %></span>
-  </p>
+  <%= render 'metadata', recipe: recipe %>
 
   <h3><%= link_to(recipe.name, recipe_path(recipe), title: recipe.name) %></h3>
 </div>

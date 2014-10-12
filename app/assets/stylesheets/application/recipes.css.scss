@@ -51,7 +51,10 @@
 }
 
 .recipe-entry .meta {
+  margin: 0;
+  padding: 0;
   float: right;
+  text-align: right;
 }
 
 .recipe {
@@ -76,17 +79,12 @@
   padding: 0;
   text-align: right;
   font-size: 0.8em;
+  color: #666;
 }
 
 .recipe .meta a,
 .recipe .meta a:visited {
   color: #666;
-}
-
-.recipe-entry .date,
-.recipe .date {
-  font-weight: bold;
-  color: #333;
 }
 
 .recipe p.url,

@@ -44,6 +44,7 @@ header h1 span.username {
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 100px;
 }
 
 .sidebar {
@@ -114,6 +115,7 @@ input.error,
   font-weight: bold;
 }
 
+footer,
 .tools {
   background: black;
   color: #fff;
@@ -123,6 +125,10 @@ input.error,
   margin: 0;
   font: sans-serif;
   font-weight: bold;
+}
+
+footer {
+  text-align: center;
 }
 
 .tools a,

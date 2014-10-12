@@ -2,6 +2,18 @@ es:
   recipes:
     recipe:
       added: Añadida el
+    metadata:
+      edit: Editar
+      added: añadida el
+      vegetarian: vegetariano
+      non_vegetarian: no vegetariano
+      time_lunch: comida
+      time_dinner: cena
+      time_any: comida/cena
+      season_warm: plato caliente
+      season_cold: plato frío
+      season_any: cualquier temporada
+
     index:
       food: "Recetas con <em>%{name}</em>:"
       searching:
@@ -10,8 +22,7 @@ es:
     show:
       preparation: Preparación
       ingredients: Ingredientes
-      added: Añadida el
-      edit: Editar
+
     new:
       new: Guarda una nueva receta
       help: Introduce la URL de la receta y trataremos de traernos la receta

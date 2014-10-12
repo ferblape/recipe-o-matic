@@ -1,0 +1,19 @@
+<p class="meta">
+  <span class="vegetarian"><%= recipe.vegetarian? ? t('.vegetarian') : t('.non_vegetarian') %></span> ·
+
+  <% if recipe.season.present? %>
+    <span class="season"><%= t('.season_' + recipe.season.to_s) %></span> ·
+  <% end %>
+
+  <% if recipe.time.present? %>
+    <span class="time"><%= t('.time_' + recipe.time.to_s) %></span>
+  <% end %>
+  <br>
+  <%= t('.added') %>
+
+  <span class="date"><%= l(recipe.created_at, format: :short) %></span>
+
+  <% if admin? %>
+    ⎯ <%= link_to('✎ ' + t('.edit'), edit_recipe_path(recipe.slug)) %>
+  <% end %>
+</p>

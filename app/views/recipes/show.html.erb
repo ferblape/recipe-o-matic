@@ -16,13 +16,7 @@
     <%= image_tag(@recipe.image.big.url, class: 'u-photo') %>
   </div>
 
-  <p class="meta">
-    <%= t('.added') %>
-    <span class="date"><%= l(@recipe.created_at, format: :short) %></span>
-    <% if admin? %>
-      ⎯ <%= link_to('✎ ' + t('.edit'), edit_recipe_path(@recipe.slug)) %>
-    <% end %>
-  </p>
+  <%= render 'metadata', recipe: @recipe %>
 
   <h3><%= t('.ingredients') %></h3>
 
