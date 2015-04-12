@@ -22,6 +22,8 @@ class RecipeFetcher::Base
       RecipeFetcher::Adapters::Recetasdemama.new(url)
     elsif url =~ /\Ahttp:\/\/www\.contigoenlaplaya\.com/
       RecipeFetcher::Adapters::Contigoenlaplaya.new(url)
+    elsif url =~ /\Ahttp:\/\/blogs\.elpais\.com\/el\-comidista/
+      RecipeFetcher::Adapters::Comidista.new(url)
     else
       raise NoAdapter
     end
