@@ -7,7 +7,6 @@ require 'fakeweb'
 
 FakeWeb.allow_net_connect = %r[^https?://127\.0\.0\.1]
 
-
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 ActiveRecord::Migration.maintain_test_schema!
 

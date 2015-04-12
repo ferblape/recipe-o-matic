@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140811120832) do
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-  create_table "foods", force: true do |t|
+  create_table "foods", force: :cascade do |t|
     t.string  "name"
     t.string  "plural_name"
     t.boolean "skip_from_lists", default: false
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20140811120832) do
   add_index "foods", ["plural_name"], name: "index_foods_on_plural_name", using: :btree
   add_index "foods", ["skip_from_lists"], name: "index_foods_on_skip_from_lists", using: :btree
 
-  create_table "ingredients", force: true do |t|
+  create_table "ingredients", force: :cascade do |t|
     t.integer  "recipe_id"
     t.integer  "food_id"
     t.string   "text"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140811120832) do
   add_index "ingredients", ["food_id"], name: "index_ingredients_on_food_id", using: :btree
   add_index "ingredients", ["recipe_id"], name: "index_ingredients_on_recipe_id", using: :btree
 
-  create_table "list_entries", force: true do |t|
+  create_table "list_entries", force: :cascade do |t|
     t.integer  "list_id"
     t.integer  "recipe_id"
     t.integer  "position"
@@ -50,13 +50,13 @@ ActiveRecord::Schema.define(version: 20140811120832) do
 
   add_index "list_entries", ["list_id", "recipe_id"], name: "index_list_entries_on_list_id_and_recipe_id", unique: true, using: :btree
 
-  create_table "lists", force: true do |t|
+  create_table "lists", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "recipes", force: true do |t|
+  create_table "recipes", force: :cascade do |t|
     t.string   "name"
     t.string   "original_url"
     t.text     "text"
