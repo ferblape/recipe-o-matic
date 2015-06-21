@@ -3,15 +3,15 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'
 
-set :domain, 'blato01'
-set :deploy_to, '/var/www/recipes'
+set :domain, 'blato03'
+set :deploy_to, '/var/www/recetas.blat.es'
 set :repository, 'git@github.com:ferblape/recipe-o-matic.git'
 set :branch, 'master'
 
 set :shared_paths, ['config/database.yml', 'log', 'public/uploads', 'public/cache']
 
 set :user, 'ubuntu'
-set :port, '2222'
+set :port, '22'
 set :forward_agent, true
 
 task :environment do
