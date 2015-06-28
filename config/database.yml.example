@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: recipe-o-matic_development
+  pool: 5
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: recipe-o-matic_test
+  pool: 5
