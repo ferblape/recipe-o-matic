@@ -8,29 +8,30 @@ set :deploy_to, '/var/www/recetas.blat.es'
 set :repository, 'git@github.com:ferblape/recipe-o-matic.git'
 set :branch, 'master'
 
-set :shared_paths, ['config/database.yml', 'log', 'public/uploads', 'public/cache']
+set :shared_dirs, fetch(:shared_dirs, []).push('log', 'public/uploads', 'public/cache')
+set :shared_files, fetch(:shared_files, []).push('config/database.yml')
 
 set :user, 'ubuntu'
 set :port, '22'
 set :forward_agent, true
 
-task :environment do
+task :remote_environment do
   invoke :'rbenv:load'
 end
 
-task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/shared/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+task :setup do
+  command %[mkdir -p "#{fetch(:deploy_to)}/shared/log"]
+  command %[chmod g+rx,u+rwx "#{fetch(:deploy_to)}/shared/log"]
 
-  queue! %[mkdir -p "#{deploy_to}/shared/config"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+  command %[mkdir -p "#{fetch(:deploy_to)}/shared/config"]
+  command %[chmod g+rx,u+rwx "#{fetch(:deploy_to)}/shared/config"]
 
-  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
+  command %[touch "#{fetch(:deploy_to)}/shared/config/database.yml"]
+  command  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
 end
 
 desc "Deploys the current version to the server."
-task :deploy => :environment do
+task :deploy do
   deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
@@ -38,9 +39,9 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
 
-    to :launch do
-      queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-      queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+    on :launch do
+      command "mkdir -p #{fetch(:deploy_to)}/#{fetch(:current_path)}/tmp/"
+      command "touch #{fetch(:deploy_to)}/#{fetch(:current_path)}/tmp/restart.txt"
     end
   end
 end
