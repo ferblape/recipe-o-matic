@@ -3,7 +3,7 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'
 
-set :domain, 'blato03'
+set :domain, 'blato01'
 set :deploy_to, '/var/www/recetas.blat.es'
 set :repository, 'git@github.com:ferblape/recipe-o-matic.git'
 set :branch, 'master'

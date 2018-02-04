@@ -54,7 +54,7 @@ class Recipe < ActiveRecord::Base
   TIME_VALUES   = ['lunch', 'dinner', 'any']
   SEASON_VALUES = ['warm', 'cold', 'any']
 
-  hstore_accessor :metadata, time: :string,
+  jsonb_accessor :metadata, time: :string,
                              season: :string,
                              vegetarian: :boolean
 

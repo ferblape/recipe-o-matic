@@ -1,7 +1,7 @@
 class Admin::FoodsController < ApplicationController
   layout 'admin'
 
-  before_filter :load_food, only: [:show, :edit, :update]
+  before_action :load_food, only: [:show, :edit, :update]
 
   def index
     foods = Food.order('name ASC')

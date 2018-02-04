@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
 
-  before_filter :load_list, only: [:new, :edit, :update, :show]
+  before_action :load_list, only: [:new, :edit, :update, :show]
 
   def index
     @lists = List.sorted_by_creation

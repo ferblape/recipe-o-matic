@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, only: [:authenticate]
+  skip_before_action :verify_authenticity_token, only: [:authenticate]
 
   def authenticate
     session[:admin_user] = request.env['omniauth.auth'].info.name
