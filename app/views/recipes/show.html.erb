@@ -13,7 +13,11 @@
   <% end %>
 
   <div class="image">
-    <%= image_tag(@recipe.image.big.url, class: 'u-photo') %>
+    <% if @recipe.image.big.url.present? %>
+      <%= image_tag(@recipe.image.big.url, class: 'u-photo') %>
+    <% else %>
+      <%= image_tag("images/default.png", alt: recipe.name, height: 250, width: 650) %>
+    <% end %>
   </div>
 
   <%= render 'metadata', recipe: @recipe %>
