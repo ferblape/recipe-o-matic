@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Burjassot agendas</title>
+  <% if Rails.env.production? %>
+  <script type="text/javascript" src="https://burjassot.gobify.net/embed.js"></script>
+  <% else %>
+  <script src="http://localhost:5000/js/index.js"></script>
+  <% end %>
+</head>
+<body>
+
+<% if Rails.env.production? %>
+<div gobierto-embed="https://burjassot.gobify.net/agendas" base-path="http://recetas.blat.es/gobierto-embed"></div>
+<% else %>
+<div gobierto-embed="http://madrid.gobierto.test/agendas" base-path="http://localhost:4000/gobierto-embed"></div>
+<% end %>
+
+</body>
+</html>

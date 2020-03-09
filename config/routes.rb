@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/auth/twitter/callback', to: 'sessions#authenticate'
   get '/logout', to: 'sessions#logout'
 
+  get "/gobierto-embed(/*any)" => "gobierto#index"
+
   resources :foods, path: 'alimentos' do
     resources :recipes, only: [:index], path: 'recetas'
   end
